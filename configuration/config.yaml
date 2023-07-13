@@ -1,0 +1,22 @@
+data:
+  data_original_path: artifacts/data/original_data/stud.csv
+  data_train_path: artifacts/data/original_data/train_data.csv
+  data_test_path: artifacts/data/original_data/test_data.csv
+  data_target_column: math_score
+  data_transformer_path: artifacts/data/transformed_data/data_transformer.pkl
+  data_transformed_train_array_path: artifacts/data/transformed_data/transformed_train_arr.npy
+  data_transformed_test_array_path: artifacts/data/transformed_data/transformed_test_arr.npy
+  
+
+model:
+  base_model_path: artifacts/models/base_model/model.h5
+
+
+callback: 
+  callback_path: artifacts/callbacks
+  tensorboard_log_path: artifacts/callbacks/tensorboard_logs
+  model_checkpoint_path: artifacts/callbacks/checkpoints/model.h5
+
+
+train:
+  trained_model_path: artifacts/models/trained_model/model.h5

@@ -1,0 +1,160 @@
+[2023-07-12 19:30:00,468: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 19:30:00,468: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 19:31:00,409: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 19:31:00,409: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 19:31:01,796: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 19:31:01,815: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 19:31:01,818: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 19:31:01,819: ERROR: main: yaml file is empty]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 21, in read_yaml
+    return ConfigBox(content)
+  File "box\box.py", line 291, in box.box.Box.__init__
+box.exceptions.BoxValueError: First argument must be mapping or iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 9, in <module>
+    data_ingestion.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s1_data_ingestion_pipeline.py", line 11, in main
+    config=ConfigurationManager()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\config\configuration_manager.py", line 11, in __init__
+    self.params=read_yaml(params_file_path)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 23, in read_yaml
+    raise ValueError("yaml file is empty")
+ValueError: yaml file is empty
+[2023-07-12 19:31:18,045: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 19:31:18,045: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 19:31:19,461: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 19:31:19,475: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 19:31:19,483: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 19:31:19,483: ERROR: main: yaml file is empty]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 21, in read_yaml
+    return ConfigBox(content)
+  File "box\box.py", line 291, in box.box.Box.__init__
+box.exceptions.BoxValueError: First argument must be mapping or iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 9, in <module>
+    data_ingestion.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s1_data_ingestion_pipeline.py", line 11, in main
+    config=ConfigurationManager()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\config\configuration_manager.py", line 11, in __init__
+    self.params=read_yaml(params_file_path)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 23, in read_yaml
+    raise ValueError("yaml file is empty")
+ValueError: yaml file is empty
+[2023-07-12 19:32:04,445: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 19:32:04,460: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 19:32:05,832: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 19:32:05,839: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 19:32:05,849: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 19:32:05,866: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 19:32:05,870: INFO: utils: created directory at: artifacts/data/transformed_data]
+[2023-07-12 19:32:05,881: INFO: data_ingestion: Train and test data created.]
+[2023-07-12 19:32:05,882: ERROR: data_ingestion: 'DataIngestion' object has no attribute 'data_ingestion_config']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 27, in ingest_data
+    return (self.data_ingestion_config.train_data_path, self.data_ingestion_config.test_data_path)
+AttributeError: 'DataIngestion' object has no attribute 'data_ingestion_config'
+[2023-07-12 19:32:05,884: ERROR: main: 'DataIngestion' object has no attribute 'data_ingestion_config']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 9, in <module>
+    data_ingestion.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s1_data_ingestion_pipeline.py", line 13, in main
+    data_ingestion.ingest_data()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 31, in ingest_data
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 27, in ingest_data
+    return (self.data_ingestion_config.train_data_path, self.data_ingestion_config.test_data_path)
+AttributeError: 'DataIngestion' object has no attribute 'data_ingestion_config'
+[2023-07-12 19:32:59,440: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 19:32:59,440: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 19:33:00,845: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 19:33:00,858: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 19:33:00,859: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 19:33:00,869: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 19:33:00,881: INFO: data_ingestion: Train and test data created.]
+[2023-07-12 19:33:00,882: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:12:57,792: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:12:57,792: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:12:59,885: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:12:59,892: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:12:59,895: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:12:59,918: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 20:12:59,919: INFO: data_ingestion: Data already exists. Skipping ingestion.]
+[2023-07-12 20:12:59,920: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:24:36,453: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:24:36,453: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:24:37,871: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:24:37,886: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:24:37,888: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:24:37,896: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 20:24:37,915: INFO: data_ingestion: Train and test data created.]
+[2023-07-12 20:24:37,916: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:24:56,327: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:24:56,327: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:24:57,691: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:24:57,702: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:24:57,704: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:24:57,705: INFO: data_ingestion: Data already exists. Skipping ingestion.]
+[2023-07-12 20:24:57,706: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:38:48,039: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:38:48,039: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:38:49,645: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:38:49,662: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:38:49,663: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:38:49,664: INFO: data_ingestion: Data already exists. Skipping ingestion.]
+[2023-07-12 20:38:49,664: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:38:49,665: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-12 20:38:49,667: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:38:49,667: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:38:49,699: ERROR: data_transformer: 'DataConfig' object has no attribute 'target_column']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_transformer.py", line 57, in transform_data
+    target_column=self.config.target_column
+AttributeError: 'DataConfig' object has no attribute 'target_column'
+[2023-07-12 20:38:49,701: ERROR: main: 'DataConfig' object has no attribute 'target_column']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 22, in <module>
+    data_tranformer.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s2_data_transformation_pipeline.py", line 13, in main
+    data_transformer.transform_data()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_transformer.py", line 78, in transform_data
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_transformer.py", line 57, in transform_data
+    target_column=self.config.target_column
+AttributeError: 'DataConfig' object has no attribute 'target_column'
+[2023-07-12 20:39:20,705: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:39:20,705: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:39:22,139: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:39:22,155: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:39:22,157: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:39:22,157: INFO: data_ingestion: Data already exists. Skipping ingestion.]
+[2023-07-12 20:39:22,157: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:39:22,159: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-12 20:39:22,162: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:39:22,163: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:39:22,218: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
