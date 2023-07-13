@@ -38,9 +38,15 @@ def create_directories(path_to_directories: list, verbose=True):
 def remove_directories(path_to_directories: list, verbose=True):
     for path in path_to_directories:
         if os.path.exists(path):
-            shutil.rmtree(path)
-            if verbose:
-                logger.info(f"removed directory at: {path}")
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+                if verbose:
+                    logger.info(f"removed directory at: {path}")
+            else:
+                if os.path.isfile(path):
+                    os.remove(path)
+                    if verbose:
+                        logger.info(f"removed file at: {path}")
 
 def save_object(obj, file_path):
     try:

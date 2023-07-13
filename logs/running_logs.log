@@ -158,3 +158,64 @@ x==========x]
 [2023-07-12 20:39:22,218: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
 
 x==========x]
+[2023-07-12 20:47:21,102: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:47:21,102: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:47:22,712: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:47:22,724: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:47:22,735: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:47:22,736: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-12 20:47:22,739: ERROR: data_ingestion: [WinError 267] The directory name is invalid: 'artifacts/data/original_data/train_data.csv']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 39, in ingest_data
+    remove_directories([self.config.data_train_path, self.config.data_test_path])
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 835, in __call__
+    return self.f(*args, **kwargs)
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 41, in remove_directories
+    shutil.rmtree(path)
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 750, in rmtree
+    return _rmtree_unsafe(path, onerror)
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 601, in _rmtree_unsafe
+    onerror(os.scandir, path, sys.exc_info())
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 598, in _rmtree_unsafe
+    with os.scandir(path) as scandir_it:
+NotADirectoryError: [WinError 267] The directory name is invalid: 'artifacts/data/original_data/train_data.csv'
+[2023-07-12 20:47:22,744: ERROR: main: [WinError 267] The directory name is invalid: 'artifacts/data/original_data/train_data.csv']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 11, in <module>
+    data_ingestion.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s1_data_ingestion_pipeline.py", line 13, in main
+    data_ingestion.ingest_data()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 46, in ingest_data
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data_ingestion.py", line 39, in ingest_data
+    remove_directories([self.config.data_train_path, self.config.data_test_path])
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 835, in __call__
+    return self.f(*args, **kwargs)
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\common\utils.py", line 41, in remove_directories
+    shutil.rmtree(path)
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 750, in rmtree
+    return _rmtree_unsafe(path, onerror)
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 601, in _rmtree_unsafe
+    onerror(os.scandir, path, sys.exc_info())
+  File "C:\Users\fhash\anaconda3\lib\shutil.py", line 598, in _rmtree_unsafe
+    with os.scandir(path) as scandir_it:
+NotADirectoryError: [WinError 267] The directory name is invalid: 'artifacts/data/original_data/train_data.csv'
+[2023-07-12 20:50:23,943: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:50:23,943: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:50:25,743: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:50:25,757: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:50:25,759: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:50:25,760: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-12 20:50:25,761: INFO: utils: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-12 20:50:25,763: INFO: utils: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-12 20:50:25,778: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 20:50:25,789: INFO: data_ingestion: Train and test data created.]
+[2023-07-12 20:50:25,790: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:50:25,790: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-12 20:50:25,795: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:50:25,797: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:50:25,847: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]

@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from src import logger
-from src.common.utils import create_directories, remove_directories
+from src.common.utils import remove_directories
 from src.entities.config_entity import DataConfig
 
 
@@ -28,7 +28,7 @@ class DataIngestion():
             logger.exception(e)
             raise e
 
-    def ingest_data(self, skip_existing=True):
+    def ingest_data(self, skip_existing=False):
         try:
             if os.path.exists(self.config.data_train_path) and os.path.exists(self.config.data_test_path):
                 if skip_existing:
