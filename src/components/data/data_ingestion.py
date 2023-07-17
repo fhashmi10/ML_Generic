@@ -4,7 +4,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from src import logger
-from src.common.utils import remove_directories
+from src.utils.common import remove_directories
 from src.entities.config_entity import DataConfig
 
 

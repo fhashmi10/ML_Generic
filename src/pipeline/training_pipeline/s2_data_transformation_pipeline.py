@@ -1,6 +1,6 @@
 from src import logger
-from src.components.data_transformer import DataTransformer
-from src.config.configuration_manager import ConfigurationManager
+from src.components.data.data_transformer import DataTransformer
+from src.configuration.configuration_manager import ConfigurationManager
 
 
 class DataTransformerPipeline():

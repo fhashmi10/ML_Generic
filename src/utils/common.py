@@ -47,6 +47,7 @@ def remove_directories(path_to_directories: list, verbose=True):
                     os.remove(path)
                     if verbose:
                         logger.info(f"removed file at: {path}")
+                        
 
 def save_object(obj, file_path):
     try:

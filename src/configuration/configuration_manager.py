@@ -1,7 +1,7 @@
 import os
 
-from src.common.utils import read_yaml
-from src.config import CONFIG_FILE_PATH, PARAMS_FILE_PATH
+from src.utils.common import read_yaml
+from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.entities.config_entity import (DataConfig)
 
 

@@ -6,7 +6,7 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src import logger
-from src.common.utils import (save_object)
+from src.utils.common import (save_object)
 from src.entities.config_entity import DataConfig
 
 

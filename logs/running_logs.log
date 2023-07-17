@@ -219,3 +219,98 @@ x==========x]
 [2023-07-12 20:50:25,847: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
 
 x==========x]
+[2023-07-12 20:57:06,294: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-12 20:57:06,294: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-12 20:57:07,974: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-12 20:57:07,977: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:57:07,977: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:57:07,983: INFO: data_ingestion: Input data file loaded.]
+[2023-07-12 20:57:07,989: INFO: data_ingestion: Train and test data created.]
+[2023-07-12 20:57:07,989: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-12 20:57:07,989: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-12 20:57:07,991: INFO: utils: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-12 20:57:07,992: INFO: utils: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-12 20:57:08,048: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:34:53,628: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:34:53,628: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:36:05,399: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:36:05,399: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:36:07,290: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 18:36:07,290: INFO: common: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-17 18:36:07,290: INFO: common: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-17 18:36:07,290: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 18:36:07,290: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 18:36:07,290: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 18:36:07,318: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 18:36:07,328: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 18:36:07,328: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:36:07,330: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 18:36:07,332: INFO: common: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-17 18:36:07,334: INFO: common: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-17 18:36:07,390: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:41:54,074: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:41:54,074: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:41:55,768: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 18:41:55,771: INFO: common: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-17 18:41:55,772: INFO: common: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-17 18:41:55,773: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 18:41:55,774: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 18:41:55,775: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 18:41:55,784: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 18:41:55,795: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 18:41:55,796: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:41:55,797: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 18:41:55,800: INFO: common: yaml file: configuration\config.yaml loaded successfully]
+[2023-07-17 18:41:55,804: INFO: common: yaml file: configuration\params.yaml loaded successfully]
+[2023-07-17 18:41:55,881: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:46:47,296: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:46:47,296: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:46:59,833: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:46:59,833: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:47:01,272: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 18:47:01,272: ERROR: main: [Errno 2] No such file or directory: 'configuration\\config.yaml']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 11, in <module>
+    data_ingestion.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s1_data_ingestion_pipeline.py", line 11, in main
+    config=ConfigurationManager()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\configuration\configuration_manager.py", line 10, in __init__
+    self.config=read_yaml(config_file_path)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 872, in __call__
+    return_val = self.f(*args, **kwargs)
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\utils\common.py", line 25, in read_yaml
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\utils\common.py", line 18, in read_yaml
+    with open(path_to_yaml) as yaml_file:
+FileNotFoundError: [Errno 2] No such file or directory: 'configuration\\config.yaml'
+[2023-07-17 18:47:21,099: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 18:47:21,099: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 18:47:22,509: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 18:47:22,519: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 18:47:22,521: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-17 18:47:22,521: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 18:47:22,521: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 18:47:22,521: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 18:47:22,531: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 18:47:22,540: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 18:47:22,541: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 18:47:22,543: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 18:47:22,546: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 18:47:22,547: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-17 18:47:22,599: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]

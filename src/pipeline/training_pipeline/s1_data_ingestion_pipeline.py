@@ -1,6 +1,6 @@
 from src import logger
-from src.components.data_ingestion import DataIngestion
-from src.config.configuration_manager import ConfigurationManager
+from src.components.data.data_ingestion import DataIngestion
+from src.configuration.configuration_manager import ConfigurationManager
 
 
 class DataIngestionPipeline:
