@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 import yaml
+import json
 from box import ConfigBox
 from box.exceptions import BoxValueError
 from ensure import ensure_annotations
@@ -13,7 +14,20 @@ from src import logger
 
 
 @ensure_annotations
-def read_yaml(path_to_yaml: Path) -> ConfigBox:
+def read_yaml(path_to_yaml: Path) -> dict:
+    try:
+        with open(path_to_yaml) as yaml_file:
+            content = yaml.safe_load(yaml_file)
+            logger.info(f"yaml file: {path_to_yaml} loaded successfully")
+            return content
+    except BoxValueError:
+        raise ValueError("yaml file is empty")
+    except Exception as e:
+        raise e
+    
+
+@ensure_annotations
+def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
     try:
         with open(path_to_yaml) as yaml_file:
             content = yaml.safe_load(yaml_file)
@@ -68,3 +82,10 @@ def load_object(file_path):
     except Exception as e:
         logger.exception(e)
         raise e
+
+
+@ensure_annotations
+def save_json(path: Path, data: dict):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
+    logger.info(f"json file saved at: {path}")

@@ -70,8 +70,10 @@ class DataTransformer():
             X_train_arr=data_transformer.transform(X_train)
             X_test_arr=data_transformer.transform(X_test)
 
-            np.save(self.config.data_transformed_train_array_path, np.c_[X_train_arr, np.array(y_train)])
-            np.save(self.config.data_transformed_test_array_path, np.c_[X_test_arr, np.array(y_test)])
+            np.save(self.config.data_transformed_X_train_array_path, X_train_arr)
+            np.save(self.config.data_transformed_X_test_array_path, X_test_arr)
+            np.save(self.config.data_transformed_y_train_array_path, np.array(y_train))
+            np.save(self.config.data_transformed_y_test_array_path, np.array(y_test))
             
         except Exception as e:
             logger.exception(e)

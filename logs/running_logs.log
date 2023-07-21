@@ -314,3 +314,824 @@ x==========x]
 [2023-07-17 18:47:22,599: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
 
 x==========x]
+[2023-07-17 20:30:19,665: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 20:30:19,665: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 20:31:27,111: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 20:31:27,111: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 20:31:28,574: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 20:31:28,593: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:31:28,594: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 20:31:28,595: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 20:31:28,596: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 20:31:28,604: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 20:31:28,615: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 20:31:28,616: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 20:31:28,617: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 20:31:28,620: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:31:28,673: ERROR: data_transformer: 'DataConfig' object has no attribute 'data_transformed_train_array_path']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data\data_transformer.py", line 73, in transform_data
+    np.save(self.config.data_transformed_train_array_path, np.c_[X_train_arr, np.array(y_train)])
+AttributeError: 'DataConfig' object has no attribute 'data_transformed_train_array_path'
+[2023-07-17 20:31:28,675: ERROR: main: 'DataConfig' object has no attribute 'data_transformed_train_array_path']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 22, in <module>
+    data_tranformer.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s2_data_transformation_pipeline.py", line 13, in main
+    data_transformer.transform_data()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data\data_transformer.py", line 78, in transform_data
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\data\data_transformer.py", line 73, in transform_data
+    np.save(self.config.data_transformed_train_array_path, np.c_[X_train_arr, np.array(y_train)])
+AttributeError: 'DataConfig' object has no attribute 'data_transformed_train_array_path'
+[2023-07-17 20:34:05,532: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 20:34:05,532: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 20:34:06,976: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 20:34:06,983: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:34:06,984: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 20:34:06,985: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 20:34:06,987: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 20:34:06,995: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 20:34:07,003: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 20:34:07,004: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 20:34:07,006: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 20:34:07,009: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:34:07,069: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-17 20:35:09,503: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-17 20:35:09,503: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-17 20:35:10,907: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-17 20:35:10,907: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:35:10,907: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-17 20:35:10,907: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-17 20:35:10,923: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-17 20:35:10,923: INFO: data_ingestion: Input data file loaded.]
+[2023-07-17 20:35:10,923: INFO: data_ingestion: Train and test data created.]
+[2023-07-17 20:35:10,923: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-17 20:35:10,923: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-17 20:35:10,923: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-17 20:35:10,991: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:18:09,262: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:18:09,262: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:18:11,415: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:18:11,416: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:18:11,419: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:18:11,419: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:18:11,419: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:18:11,430: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:18:11,437: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:18:11,437: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:18:11,438: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:18:11,439: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:18:11,502: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:19:12,974: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:19:12,974: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:20:56,368: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:20:56,368: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:20:58,076: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:20:58,095: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:20:58,096: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:20:58,098: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:20:58,099: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:20:58,111: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:20:58,122: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:20:58,123: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:20:58,124: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:20:58,126: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:20:58,180: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:20:58,180: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:20:58,188: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:20:58,204: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:20:58,257: ERROR: model_trainer: "'LinearRegression'"]
+Traceback (most recent call last):
+  File "box\box.py", line 587, in box.box.Box.__getitem__
+KeyError: 'LinearRegression'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 32, in train_models
+    param=self.params[list(self.models.keys())[i]]
+  File "box\box.py", line 608, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'LinearRegression'"
+[2023-07-20 20:20:58,259: ERROR: main: "'LinearRegression'"]
+Traceback (most recent call last):
+  File "box\box.py", line 587, in box.box.Box.__getitem__
+KeyError: 'LinearRegression'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 64, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 32, in train_models
+    param=self.params[list(self.models.keys())[i]]
+  File "box\box.py", line 608, in box.box.Box.__getitem__
+box.exceptions.BoxKeyError: "'LinearRegression'"
+[2023-07-20 20:22:13,179: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:22:13,179: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:22:15,257: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:22:15,264: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:22:15,265: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:22:15,266: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:22:15,268: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:22:15,280: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:22:15,292: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:22:15,292: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:22:15,293: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:22:15,298: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:22:15,378: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:22:15,379: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:22:15,382: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:22:15,395: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:24:32,943: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:24:32,943: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:24:34,575: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:24:34,578: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:24:34,580: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:24:34,581: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:24:34,582: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:24:34,592: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:24:34,601: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:24:34,602: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:24:34,603: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:24:34,605: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:24:34,655: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:24:34,657: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:24:34,659: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:24:34,664: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:24:34,690: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:24:34,698: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:25:06,894: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:25:06,895: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:25:08,530: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:25:08,533: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:25:08,533: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:25:08,535: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:25:08,536: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:25:08,545: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:25:08,555: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:25:08,556: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:25:08,557: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:25:08,559: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:25:08,608: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:25:08,609: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:25:08,612: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:25:08,616: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:25:08,648: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:25:08,652: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:26:09,502: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:26:09,502: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:26:11,593: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:26:11,616: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:26:11,617: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:26:11,618: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:26:11,619: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:26:11,631: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:26:11,644: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:26:11,645: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:26:11,646: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:26:11,651: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:26:11,713: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:26:11,713: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:26:11,731: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:26:11,745: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:26:33,827: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:26:33,829: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:28:21,353: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:28:21,353: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:28:22,947: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:28:22,947: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:28:22,947: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:28:22,947: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:28:22,947: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:28:22,963: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:28:22,963: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:28:22,963: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:28:22,963: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:28:22,973: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:28:23,022: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:28:23,023: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:28:23,025: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:28:23,030: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:28:23,057: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:28:23,061: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:29:20,264: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:29:20,264: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:29:22,326: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:29:22,334: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:29:22,336: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:29:22,337: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:29:22,338: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:29:22,349: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:29:22,362: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:29:22,363: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:29:22,364: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:29:22,370: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:29:22,440: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:29:22,440: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:29:22,445: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:29:22,459: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:29:47,243: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:29:47,247: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:30:24,204: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:30:24,204: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:30:25,811: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:30:25,826: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:25,827: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:30:25,828: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:30:25,829: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:30:25,840: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:30:25,851: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:30:25,852: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:30:25,853: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:30:25,855: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:25,906: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:30:25,906: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:30:25,910: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:25,915: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:30:25,916: ERROR: main: Return value of <function read_yaml at 0x0000018DCE9EC700> of type <class 'dict'> does not match annotation type <class 'box.config_box.ConfigBox'>]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 12, in main
+    model_builder_trainer=ModelBuilder(data_config=config.get_data_config(), model_config=config.get_model_config())
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 18, in __init__
+    params_manager = ParametersManager()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\configuration\parameters_manager.py", line 7, in __init__
+    self.params=read_yaml(params_file_path)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 875, in __call__
+    raise EnsureError(msg.format(f=self.f, t=self.return_templ, valt=type(return_val)))
+ensure.main.EnsureError: Return value of <function read_yaml at 0x0000018DCE9EC700> of type <class 'dict'> does not match annotation type <class 'box.config_box.ConfigBox'>
+[2023-07-20 20:30:52,436: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:30:52,436: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:30:54,498: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:30:54,503: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:54,504: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:30:54,505: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:30:54,505: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:30:54,517: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:30:54,530: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:30:54,531: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:30:54,533: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:30:54,537: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:54,597: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:30:54,597: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:30:54,610: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:30:54,623: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:30:54,624: ERROR: main: Return value of <function read_yaml at 0x0000019F757C43A0> of type <class 'dict'> does not match annotation type <class 'box.config_box.ConfigBox'>]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 12, in main
+    model_builder_trainer=ModelBuilder(data_config=config.get_data_config(), model_config=config.get_model_config())
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 18, in __init__
+    params_manager = ParametersManager()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\configuration\parameters_manager.py", line 7, in __init__
+    self.params=read_yaml(params_file_path)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\ensure\main.py", line 875, in __call__
+    raise EnsureError(msg.format(f=self.f, t=self.return_templ, valt=type(return_val)))
+ensure.main.EnsureError: Return value of <function read_yaml at 0x0000019F757C43A0> of type <class 'dict'> does not match annotation type <class 'box.config_box.ConfigBox'>
+[2023-07-20 20:31:28,515: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:31:28,515: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:31:30,110: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:31:30,126: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:31:30,127: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:31:30,128: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:31:30,130: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:31:30,139: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:31:30,149: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:31:30,150: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:31:30,151: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:31:30,153: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:31:30,201: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:31:30,202: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:31:30,204: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:31:30,209: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:31:30,242: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:31:30,247: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:32:04,726: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:32:04,726: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:32:06,827: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:32:06,843: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:32:06,844: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:32:06,844: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:32:06,845: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:32:06,858: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:32:06,870: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:32:06,871: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:32:06,872: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:32:06,877: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:32:06,937: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:32:06,937: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:32:06,949: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:32:06,962: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:32:45,267: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:32:45,271: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:33:31,365: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:33:31,365: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:33:33,419: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:33:33,432: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:33:33,433: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:33:33,434: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:33:33,435: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:33:33,449: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:33:33,461: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:33:33,462: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:33:33,463: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:33:33,469: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:33:33,526: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:33:33,526: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:33:33,543: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:33:33,556: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:35:27,198: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:35:27,198: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:35:29,317: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:35:29,327: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:35:29,328: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:35:29,329: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:35:29,329: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:35:29,341: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:35:29,354: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:35:29,355: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:35:29,356: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:35:29,360: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:35:29,423: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:35:29,423: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:35:29,433: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:35:29,444: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:36:04,945: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:36:04,957: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:37:07,049: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:37:07,049: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:37:08,840: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:37:08,845: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:08,846: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:37:08,846: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:37:08,846: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:37:08,858: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:37:08,868: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:37:08,869: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:37:08,870: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:37:08,872: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:08,919: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:37:08,920: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:37:08,922: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:08,927: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:37:08,957: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:37:08,961: ERROR: main: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:37:51,490: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:37:51,490: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:37:53,577: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:37:53,598: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:53,599: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:37:53,600: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:37:53,600: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:37:53,615: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:37:53,626: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:37:53,627: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:37:53,628: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:37:53,633: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:53,694: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:37:53,694: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:37:53,708: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:37:53,723: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:38:55,715: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:38:55,715: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:38:58,503: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:38:58,511: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:38:58,512: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:38:58,513: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:38:58,514: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:38:58,525: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:38:58,536: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:38:58,536: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:38:58,537: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:38:58,542: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:39:38,575: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:39:38,576: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:39:38,585: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:39:38,605: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:40:24,535: ERROR: model_trainer: Found input variables with inconsistent numbers of samples: [800, 200]]
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 38, in train_models
+    gsv.fit(self.X_train,self.y_train)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\model_selection\_search.py", line 782, in fit
+    X, y, groups = indexable(X, y, groups)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 443, in indexable
+    check_consistent_length(*result)
+  File "C:\Users\fhash\anaconda3\lib\site-packages\sklearn\utils\validation.py", line 397, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [800, 200]
+[2023-07-20 20:41:53,610: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:41:53,610: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:41:55,681: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:41:55,692: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:41:55,694: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:41:55,695: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:41:55,696: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:41:55,708: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:41:55,719: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:41:55,721: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:41:55,722: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:41:55,727: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:43:45,946: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:43:45,946: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:43:47,599: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:43:47,599: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:43:47,611: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:43:47,611: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:43:47,611: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:43:47,615: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:43:47,615: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:43:47,615: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:43:47,615: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:43:47,626: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:43:47,672: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:43:47,673: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:43:47,675: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:43:47,681: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:44:35,039: INFO: main: >>>>>> Model Training stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:57:38,204: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 20:57:38,204: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 20:57:39,971: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 20:57:39,991: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:57:39,991: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 20:57:39,992: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 20:57:39,992: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 20:57:40,013: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 20:57:40,021: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 20:57:40,022: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:57:40,023: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 20:57:40,026: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:57:40,079: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 20:57:40,080: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 20:57:40,082: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 20:57:40,087: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 20:57:40,131: INFO: model_trainer: Training GSV to find best parameters for LinearRegression]
+[2023-07-20 20:57:40,155: INFO: model_trainer: Training LinearRegression on training data]
+[2023-07-20 20:57:40,158: INFO: model_trainer: Training GSV to find best parameters for DecisionTreeRegressor]
+[2023-07-20 20:57:40,221: INFO: model_trainer: Training DecisionTreeRegressor on training data]
+[2023-07-20 20:57:40,241: INFO: model_trainer: Training GSV to find best parameters for RandomForestRegressor]
+[2023-07-20 20:57:43,405: INFO: model_trainer: Training RandomForestRegressor on training data]
+[2023-07-20 20:57:43,986: INFO: model_trainer: Training GSV to find best parameters for AdaBoostRegressor]
+[2023-07-20 20:57:50,140: INFO: model_trainer: Training AdaBoostRegressor on training data]
+[2023-07-20 20:57:50,204: INFO: model_trainer: Training GSV to find best parameters for GradientBoostRegressor]
+[2023-07-20 20:58:09,905: INFO: model_trainer: Training GradientBoostRegressor on training data]
+[2023-07-20 20:58:10,009: INFO: model_trainer: Training GSV to find best parameters for XGBRegressor]
+[2023-07-20 20:58:13,597: INFO: model_trainer: Training XGBRegressor on training data]
+[2023-07-20 20:58:13,677: INFO: model_trainer: Training GSV to find best parameters for CatBoostRegressor]
+[2023-07-20 20:58:27,111: INFO: model_trainer: Training CatBoostRegressor on training data]
+[2023-07-20 20:58:27,280: INFO: model_trainer: Saving Results to json file]
+[2023-07-20 20:58:27,280: INFO: common: json file saved at: scores.json]
+[2023-07-20 20:58:27,295: INFO: model_trainer: LinearRegression is the model with r2_score as 0.8804311859808921]
+[2023-07-20 20:58:27,302: INFO: main: >>>>>> Model Training stage completed <<<<<<
+
+x==========x]
