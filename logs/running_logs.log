@@ -1135,3 +1135,185 @@ x==========x]
 [2023-07-20 20:58:27,302: INFO: main: >>>>>> Model Training stage completed <<<<<<
 
 x==========x]
+[2023-07-20 21:16:18,701: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 21:16:18,701: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 21:16:20,479: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 21:16:20,483: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:16:20,484: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 21:16:20,486: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 21:16:20,488: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 21:16:20,497: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 21:16:20,505: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 21:16:20,506: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:16:20,507: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 21:16:20,509: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:16:20,559: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:16:20,560: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 21:16:20,562: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:16:20,567: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 21:16:20,595: INFO: model_trainer: Training GSV to find best parameters for LinearRegression]
+[2023-07-20 21:16:20,617: INFO: model_trainer: Training LinearRegression on training data]
+[2023-07-20 21:16:20,621: INFO: model_trainer: Evaluating LinearRegression with r2_score: 0.8804311859808921]
+[2023-07-20 21:16:20,622: INFO: model_trainer: Training GSV to find best parameters for DecisionTreeRegressor]
+[2023-07-20 21:16:20,691: INFO: model_trainer: Training DecisionTreeRegressor on training data]
+[2023-07-20 21:16:20,708: INFO: model_trainer: Evaluating DecisionTreeRegressor with r2_score: 0.7649569488416131]
+[2023-07-20 21:16:20,709: INFO: model_trainer: Training GSV to find best parameters for RandomForestRegressor]
+[2023-07-20 21:16:23,967: INFO: model_trainer: Training RandomForestRegressor on training data]
+[2023-07-20 21:16:24,539: INFO: model_trainer: Evaluating RandomForestRegressor with r2_score: 0.8536562965727417]
+[2023-07-20 21:16:24,539: INFO: model_trainer: Training GSV to find best parameters for AdaBoostRegressor]
+[2023-07-20 21:16:30,765: INFO: model_trainer: Training AdaBoostRegressor on training data]
+[2023-07-20 21:16:30,920: INFO: model_trainer: Evaluating AdaBoostRegressor with r2_score: 0.8513279858819309]
+[2023-07-20 21:16:30,920: INFO: model_trainer: Training GSV to find best parameters for GradientBoostRegressor]
+[2023-07-20 21:17:13,830: INFO: model_trainer: Training GradientBoostRegressor on training data]
+[2023-07-20 21:17:14,158: INFO: model_trainer: Evaluating GradientBoostRegressor with r2_score: 0.874844864558493]
+[2023-07-20 21:17:14,158: INFO: model_trainer: Training GSV to find best parameters for XGBRegressor]
+[2023-07-20 21:17:18,767: INFO: model_trainer: Training XGBRegressor on training data]
+[2023-07-20 21:17:18,895: INFO: model_trainer: Evaluating XGBRegressor with r2_score: 0.8628772402712002]
+[2023-07-20 21:17:18,895: INFO: model_trainer: Training GSV to find best parameters for CatBoostRegressor]
+[2023-07-20 21:17:34,022: INFO: model_trainer: Training CatBoostRegressor on training data]
+[2023-07-20 21:17:34,191: INFO: model_trainer: Evaluating CatBoostRegressor with r2_score: 0.8566301224032382]
+[2023-07-20 21:17:34,191: INFO: model_trainer: Saving Results to json file]
+[2023-07-20 21:17:34,191: INFO: common: json file saved at: scores.json]
+[2023-07-20 21:17:34,191: INFO: model_trainer: LinearRegression is the best model with r2_score as 0.8804311859808921]
+[2023-07-20 21:17:34,206: INFO: main: >>>>>> Model Training stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:18:13,879: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 21:18:13,879: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 21:18:15,960: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 21:18:15,964: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:18:15,965: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 21:18:15,966: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 21:18:15,967: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 21:18:15,980: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 21:18:15,990: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 21:18:15,991: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:18:15,992: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 21:18:15,994: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:18:16,050: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:18:16,051: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 21:18:16,054: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:18:16,060: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 21:18:16,093: INFO: model_trainer: Training GSV to find best parameters for LinearRegression]
+[2023-07-20 21:18:16,122: INFO: model_trainer: Training LinearRegression on training data]
+[2023-07-20 21:18:16,125: INFO: model_trainer: Evaluating LinearRegression with r2_scores: failed]
+[2023-07-20 21:18:16,126: INFO: model_trainer: Training GSV to find best parameters for DecisionTreeRegressor]
+[2023-07-20 21:18:16,195: INFO: model_trainer: Training DecisionTreeRegressor on training data]
+[2023-07-20 21:18:16,215: INFO: model_trainer: Evaluating DecisionTreeRegressor with r2_scores: failed]
+[2023-07-20 21:18:16,216: INFO: model_trainer: Training GSV to find best parameters for RandomForestRegressor]
+[2023-07-20 21:18:19,692: INFO: model_trainer: Training RandomForestRegressor on training data]
+[2023-07-20 21:18:20,360: INFO: model_trainer: Evaluating RandomForestRegressor with r2_scores: failed]
+[2023-07-20 21:18:20,360: INFO: model_trainer: Training GSV to find best parameters for AdaBoostRegressor]
+[2023-07-20 21:18:27,196: INFO: model_trainer: Training AdaBoostRegressor on training data]
+[2023-07-20 21:18:27,381: INFO: model_trainer: Evaluating AdaBoostRegressor with r2_scores: failed]
+[2023-07-20 21:18:27,381: INFO: model_trainer: Training GSV to find best parameters for GradientBoostRegressor]
+[2023-07-20 21:18:48,447: INFO: model_trainer: Training GradientBoostRegressor on training data]
+[2023-07-20 21:18:48,587: INFO: model_trainer: Evaluating GradientBoostRegressor with r2_scores: failed]
+[2023-07-20 21:18:48,588: INFO: model_trainer: Training GSV to find best parameters for XGBRegressor]
+[2023-07-20 21:18:52,244: INFO: model_trainer: Training XGBRegressor on training data]
+[2023-07-20 21:18:52,336: INFO: model_trainer: Evaluating XGBRegressor with r2_scores: failed]
+[2023-07-20 21:18:52,336: INFO: model_trainer: Training GSV to find best parameters for CatBoostRegressor]
+[2023-07-20 21:19:06,134: INFO: model_trainer: Training CatBoostRegressor on training data]
+[2023-07-20 21:19:06,306: INFO: model_trainer: Evaluating CatBoostRegressor with r2_scores: failed]
+[2023-07-20 21:19:06,306: INFO: model_trainer: Saving Results to json file]
+[2023-07-20 21:19:06,315: INFO: common: json file saved at: scores.json]
+[2023-07-20 21:19:06,316: ERROR: model_trainer: '<' not supported between instances of 'str' and 'float']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    if best_model_score<0.6:
+TypeError: '<' not supported between instances of 'str' and 'float'
+[2023-07-20 21:19:06,318: ERROR: main: '<' not supported between instances of 'str' and 'float']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 76, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 67, in train_models
+    if best_model_score<0.6:
+TypeError: '<' not supported between instances of 'str' and 'float'
+[2023-07-20 21:19:32,479: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 21:19:32,479: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 21:19:34,151: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 21:19:34,153: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:34,153: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 21:19:34,153: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 21:19:34,153: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 21:19:34,165: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 21:19:34,174: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 21:19:34,174: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:19:34,175: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 21:19:34,178: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:34,227: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:19:34,228: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 21:19:34,231: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:34,236: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 21:19:34,267: INFO: model_trainer: Training GSV to find best parameters for LinearRegression]
+[2023-07-20 21:19:34,290: INFO: model_trainer: Training LinearRegression on training data]
+[2023-07-20 21:19:34,295: ERROR: model_trainer: 'ModelEvaluator' object has no attribute 'r2_scores']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 53, in train_models
+    test_model_score = model_evaluator.evaluate()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_evaluator.py", line 12, in evaluate
+    return getattr(self, str(self.metric))()
+AttributeError: 'ModelEvaluator' object has no attribute 'r2_scores'
+[2023-07-20 21:19:34,298: ERROR: main: 'ModelEvaluator' object has no attribute 'r2_scores']
+Traceback (most recent call last):
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\main.py", line 35, in <module>
+    obj.main()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\pipeline\training_pipeline\s3_model_trainer_pipeline.py", line 14, in main
+    model_builder_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_builder.py", line 36, in train_models
+    model_trainer.train_models()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 76, in train_models
+    raise e
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_trainer.py", line 53, in train_models
+    test_model_score = model_evaluator.evaluate()
+  File "C:\Data\Study\AI\AI_Projects\ML_Generic\src\components\model\model_evaluator.py", line 12, in evaluate
+    return getattr(self, str(self.metric))()
+AttributeError: 'ModelEvaluator' object has no attribute 'r2_scores'
+[2023-07-20 21:19:52,022: INFO: utils: Note: NumExpr detected 12 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.]
+[2023-07-20 21:19:52,037: INFO: utils: NumExpr defaulting to 8 threads.]
+[2023-07-20 21:19:53,767: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2023-07-20 21:19:53,771: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:53,771: INFO: data_ingestion: Data already exists. Deleting existing data.]
+[2023-07-20 21:19:53,772: INFO: common: removed file at: artifacts/data/original_data/train_data.csv]
+[2023-07-20 21:19:53,774: INFO: common: removed file at: artifacts/data/original_data/test_data.csv]
+[2023-07-20 21:19:53,784: INFO: data_ingestion: Input data file loaded.]
+[2023-07-20 21:19:53,797: INFO: data_ingestion: Train and test data created.]
+[2023-07-20 21:19:53,798: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:19:53,798: INFO: main: >>>>>> stage Data Transformation stage started <<<<<<]
+[2023-07-20 21:19:53,803: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:53,863: INFO: main: >>>>>> stage Data Transformation stage completed <<<<<<
+
+x==========x]
+[2023-07-20 21:19:53,864: INFO: main: >>>>>> Model Training stage started <<<<<<]
+[2023-07-20 21:19:53,866: INFO: common: yaml file: config\config.yaml loaded successfully]
+[2023-07-20 21:19:53,871: INFO: common: yaml file: config\params.yaml loaded successfully]
+[2023-07-20 21:19:53,905: INFO: model_trainer: Training GSV to find best parameters for LinearRegression]
+[2023-07-20 21:19:53,927: INFO: model_trainer: Training LinearRegression on training data]
+[2023-07-20 21:19:53,933: INFO: model_trainer: Evaluating LinearRegression with r2_score: 0.8804311859808921]
+[2023-07-20 21:19:53,934: INFO: model_trainer: Training GSV to find best parameters for DecisionTreeRegressor]
+[2023-07-20 21:19:54,001: INFO: model_trainer: Training DecisionTreeRegressor on training data]
+[2023-07-20 21:19:54,019: INFO: model_trainer: Evaluating DecisionTreeRegressor with r2_score: 0.7566762993428082]
+[2023-07-20 21:19:54,020: INFO: model_trainer: Training GSV to find best parameters for RandomForestRegressor]
+[2023-07-20 21:19:57,281: INFO: model_trainer: Training RandomForestRegressor on training data]
+[2023-07-20 21:19:57,599: INFO: model_trainer: Evaluating RandomForestRegressor with r2_score: 0.8529865395834958]
+[2023-07-20 21:19:57,599: INFO: model_trainer: Training GSV to find best parameters for AdaBoostRegressor]

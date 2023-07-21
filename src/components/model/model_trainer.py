@@ -2,10 +2,10 @@ import os, sys
 from dataclasses import dataclass
 import numpy as np
 from sklearn.model_selection import GridSearchCV
-from sklearn.metrics import r2_score
 from pathlib import Path
 from src.utils.common import save_object, save_json
 from src.entities.config_entity import DataConfig, ModelConfig
+from src.components.model.model_evaluator import ModelEvaluator
 
 from src import logger
 
@@ -48,8 +48,10 @@ class ModelTrainer:
                 #train_model_score = r2_score(self.y_train, y_train_pred)
                 
                 y_test_pred = model.predict(self.X_test)
-                test_model_score = r2_score(self.y_test, y_test_pred)
-                logger.info(f"Evaluating {model_name} with r2_score: {test_model_score}")
+                eval_metric = 'r2_score'
+                model_evaluator = ModelEvaluator(eval_metric, self.y_test, y_test_pred)
+                test_model_score = model_evaluator.evaluate()
+                logger.info(f"Evaluating {model_name} with {eval_metric}: {test_model_score}")
 
                 trained_models[list(self.models.keys())[i]] = model
                 result[list(self.models.keys())[i]] = test_model_score
@@ -67,7 +69,7 @@ class ModelTrainer:
             
             save_object(file_path=self.models_config.model_trained_path, obj=best_model)
 
-            logger.info(f"{best_model_name} is the best model with r2_score as {best_model_score}")
+            logger.info(f"{best_model_name} is the best model with {eval_metric} as {best_model_score}")
 
         except Exception as e:
             logger.exception(e)
