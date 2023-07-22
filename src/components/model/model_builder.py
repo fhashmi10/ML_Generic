@@ -13,14 +13,14 @@ from src.configuration.parameters_manager import ParametersManager
 
 class ModelBuilder:
     def __init__(self, data_config=DataConfig, model_config=ModelConfig):
-        self.data_config=data_config
-        self.model_config=model_config
+        self.data_config = data_config
+        self.model_config = model_config
         params_manager = ParametersManager()
-        self.params=params_manager.get_params()
-
+        self.params = params_manager.get_params()
+        self.models = {}
 
     def build_models(self):
-        self.models={
+        self.models = {
             "LinearRegression": LinearRegression(),
             "DecisionTreeRegressor": DecisionTreeRegressor(),
             "RandomForestRegressor": RandomForestRegressor(),
@@ -29,9 +29,8 @@ class ModelBuilder:
             "XGBRegressor": XGBRegressor(),
             "CatBoostRegressor": CatBoostRegressor(verbose=False),
         }
-    
-    
-    def train_models(self):
-        model_trainer=ModelTrainer(models=self.models, params=self.params, data_config=self.data_config, model_config=self.model_config)
-        model_trainer.train_models()
 
+    def train_models(self):
+        model_trainer = ModelTrainer(models=self.models, params=self.params,
+                                     data_config=self.data_config, model_config=self.model_config)
+        model_trainer.train_models()

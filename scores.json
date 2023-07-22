@@ -1,9 +1,9 @@
 {
-    "LinearRegression": "failed",
-    "DecisionTreeRegressor": "failed",
-    "RandomForestRegressor": "failed",
-    "AdaBoostRegressor": "failed",
-    "GradientBoostRegressor": "failed",
-    "XGBRegressor": "failed",
-    "CatBoostRegressor": "failed"
+    "LinearRegression": 0.8804311859808921,
+    "DecisionTreeRegressor": 0.744019028644883,
+    "RandomForestRegressor": 0.8545735267945539,
+    "AdaBoostRegressor": 0.850144769755195,
+    "GradientBoostRegressor": 0.8708359475704899,
+    "XGBRegressor": 0.8628772402712002,
+    "CatBoostRegressor": 0.8566301224032382
 }

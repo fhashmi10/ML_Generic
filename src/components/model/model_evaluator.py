@@ -1,5 +1,4 @@
 from sklearn.metrics import r2_score
-from src import logger
 
 class ModelEvaluator:
     def __init__(self, metric: str, actual, predicted):

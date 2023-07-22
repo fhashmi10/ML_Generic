@@ -8,19 +8,20 @@ class ModelTrainerPipeline():
         pass
 
     def main(self):
-        config=ConfigurationManager()
-        model_builder_trainer=ModelBuilder(data_config=config.get_data_config(), model_config=config.get_model_config())
+        config = ConfigurationManager()
+        model_builder_trainer = ModelBuilder(
+            data_config=config.get_data_config(), model_config=config.get_model_config())
         model_builder_trainer.build_models()
-        model_builder_trainer.train_models()
+        #model_builder_trainer.train_models()
 
 
 if __name__ == '__main__':
-    STAGE_NAME = "Model Training stage"
     try:
-        logger.info(f">>>>>> {STAGE_NAME} started <<<<<<")
-        obj = ModelTrainerPipeline()
-        obj.main()
-        logger.info(f">>>>>> {STAGE_NAME} completed <<<<<<\n\nx==========x")
+        STAGE_NAME = "Model Training stage"
+        logger.info("%s started", STAGE_NAME)
+        model_trainer_pipe = ModelTrainerPipeline()
+        # temp-model_trainer_pipe.main()
+        logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)
         raise e
