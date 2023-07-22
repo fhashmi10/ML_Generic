@@ -12,8 +12,8 @@ class DataIngestionPipeline:
     def __init__(self):
         pass
 
-    def main(self):
-        """Main method to read configuration and ingest data"""
+    def ingest(self):
+        """Method to read configuration and ingest data"""
         try:
             config = ConfigurationManager()
             data_ingestion = DataIngestion(config=config.get_data_config())
@@ -27,7 +27,7 @@ if __name__ == '__main__':
         STAGE_NAME = "Data Ingestion stage"
         logger.info("%s started", STAGE_NAME)
         data_ingestion_pipe = DataIngestionPipeline()
-        data_ingestion_pipe.main()
+        data_ingestion_pipe.ingest()
         logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)

@@ -10,8 +10,8 @@ class ModelTrainerPipeline():
     def __init__(self):
         pass
 
-    def main(self):
-        """Main method to invoke model training"""
+    def train(self):
+        """Method to invoke model training"""
         try:
             config = ConfigurationManager()
             model_builder_trainer = ModelBuilder(
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         STAGE_NAME = "Model Training stage"
         logger.info("%s started", STAGE_NAME)
         model_trainer_pipe = ModelTrainerPipeline()
-        model_trainer_pipe.main()
+        model_trainer_pipe.train()
         logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)

@@ -6,12 +6,11 @@ from pathlib import Path
 import json
 import yaml
 from box import ConfigBox, exceptions
-from ensure import ensure_annotations
 
 from src import logger
 
 
-@ensure_annotations
+@staticmethod
 def read_yaml_dict(path_to_yaml: Path) -> dict:
     """Method to read yaml and return a dict instance"""
     try:
@@ -31,7 +30,7 @@ def read_yaml_dict(path_to_yaml: Path) -> dict:
         raise ex
 
 
-@ensure_annotations
+@staticmethod
 def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
     """Method to read yaml and return a ConfigBox instance
     A configbox helps in accessing yaml contents with . syntax"""
@@ -47,7 +46,7 @@ def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
         raise ex
 
 
-@ensure_annotations
+@staticmethod
 def create_directories(path_to_directories: list, verbose=True):
     """Method to create directories"""
     try:
@@ -63,7 +62,7 @@ def create_directories(path_to_directories: list, verbose=True):
         raise ex
 
 
-@ensure_annotations
+@staticmethod
 def remove_directories(path_to_directories: list, verbose=True):
     """Method to remove directories"""
     try:
@@ -84,6 +83,7 @@ def remove_directories(path_to_directories: list, verbose=True):
         raise ex
 
 
+@staticmethod
 def save_object(obj, file_path):
     """Method to save an object to a file"""
     try:
@@ -97,6 +97,7 @@ def save_object(obj, file_path):
         raise ex
 
 
+@staticmethod
 def load_object(file_path):
     """Method to load an object from a file"""
     try:
@@ -109,7 +110,7 @@ def load_object(file_path):
         raise ex
 
 
-@ensure_annotations
+@staticmethod
 def save_json(file_path: Path, data: dict):
     """Method to dump data to a json file"""
     try:
@@ -121,4 +122,3 @@ def save_json(file_path: Path, data: dict):
         raise ex
     except Exception as ex:
         raise ex
-    

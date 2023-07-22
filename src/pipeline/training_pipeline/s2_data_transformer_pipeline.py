@@ -11,8 +11,8 @@ class DataTransformerPipeline():
     def __init__(self):
         pass
 
-    def main(self):
-        """Main method to read configuration and transform data"""
+    def transform(self):
+        """Method to read configuration and transform data"""
         try:
             config=ConfigurationManager()
             data_transformer=DataTransformer(config=config.get_data_config())
@@ -26,7 +26,7 @@ if __name__ == '__main__':
         STAGE_NAME = "Data Transformation stage"
         logger.info("%s started <<<<<<", STAGE_NAME)
         data_tranformer_pipe = DataTransformerPipeline()
-        data_tranformer_pipe.main()
+        data_tranformer_pipe.transform()
         logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)

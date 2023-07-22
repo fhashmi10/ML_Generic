@@ -14,19 +14,19 @@ try:
     STAGE_NAME = "Data Ingestion stage"
     logger.info("%s started", STAGE_NAME)
     data_ingestion_pipe = DataIngestionPipeline()
-    data_ingestion_pipe.main()
+    data_ingestion_pipe.ingest()
     logger.info("%s completed\nx==========x", STAGE_NAME)
 
     STAGE_NAME = "Data Transformation stage"
     logger.info("%s started <<<<<<", STAGE_NAME)
     data_tranformer_pipe = DataTransformerPipeline()
-    data_tranformer_pipe.main()
+    data_tranformer_pipe.transform()
     logger.info("%s completed\nx==========x", STAGE_NAME)
 
     STAGE_NAME = "Model Training stage"
     logger.info("%s started", STAGE_NAME)
     model_trainer_pipe = ModelTrainerPipeline()
-    model_trainer_pipe.main()
+    model_trainer_pipe.train()
     logger.info("%s completed\nx==========x", STAGE_NAME)
 except Exception as e:
     logger.exception(e)
