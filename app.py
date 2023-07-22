@@ -33,7 +33,7 @@ def predict():
 
         predict_pipeline = ModelPredictionPipeline()
         results = predict_pipeline.predict(features_dict=features_dict)
-        return render_template('index.html', results=results[0])
+        return render_template('index.html', results=results)
     except Exception as ex:
         logger.error("Error in prediction %s", ex)
 

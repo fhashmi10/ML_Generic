@@ -24,7 +24,8 @@ class ModelPredictionPipeline:
             model_path = os.path.join("artifacts", "models/trained_model/model.h5")
             model = load_object(file_path=model_path)
             logger.info("loaded model successfully.")
-            prediction = model.predict(tranformed_data)
+            prediction = round(model.predict(tranformed_data)[0],0)
+            logger.info("Predicted %s", prediction)
 
             return prediction
         except Exception as ex:
