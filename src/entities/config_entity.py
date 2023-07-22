@@ -13,8 +13,8 @@ class DataConfig:
     data_test_path: Path
     data_target_column: str
     data_transformer_path: Path
-    data_transformed_X_train_array_path: Path
-    data_transformed_X_test_array_path: Path
+    data_transformed_x_train_array_path: Path
+    data_transformed_x_test_array_path: Path
     data_transformed_y_train_array_path: Path
     data_transformed_y_test_array_path: Path
 
@@ -23,3 +23,4 @@ class DataConfig:
 class ModelConfig:
     """Data class for Model configuration"""
     model_trained_path: Path
+    model_params: dict

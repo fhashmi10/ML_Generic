@@ -31,4 +31,3 @@ if __name__ == '__main__':
         logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)
-        raise e

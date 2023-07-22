@@ -1,11 +1,12 @@
+"""Module to ingest data"""
 import os
 
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from ... import logger
-from ...utils.common import remove_directories
-from ...entities.config_entity import DataConfig
+from src import logger
+from src.utils.common import remove_directories
+from src.entities.config_entity import DataConfig
 
 
 class DataIngestion():
@@ -13,6 +14,30 @@ class DataIngestion():
 
     def __init__(self, config: DataConfig):
         self.config = config
+
+    @staticmethod
+    def skip_processing(train_path: str, test_path: str, skip_existing: bool) -> bool:
+        """Method to return True if ingestion needs to be skipped"""
+        try:
+            skip_process: bool = False
+            if os.path.exists(train_path) and os.path.exists(test_path):
+                if skip_existing:
+                    logger.info('Data already exists. Skipping ingestion.')
+                    skip_process = True
+                else:
+                    logger.info('Data already exists. Deleting existing data.')
+                    remove_directories(
+                        [train_path, test_path])
+            elif os.path.exists(train_path) or os.path.exists(test_path):
+                logger.info('Partial data exists. Deleting existing data.')
+                remove_directories(
+                    [train_path, test_path])
+            return skip_process
+        except IOError as ex:
+            logger.exception("Error in checking data file on disk: %s", str)
+            raise ex
+        except Exception as ex:
+            raise ex
 
     def train_test_split(self):
         """Method to split data into train and test"""
@@ -27,26 +52,22 @@ class DataIngestion():
                              index=False, header=True)
             test_set.to_csv(self.config.data_test_path,
                             index=False, header=True)
-            logger.info('Train and test data created.')
+            logger.info('Train and test data saved to csv files on disk.')
+        except IOError as ex:
+            logger.exception("Error saving train test data files.")
+            raise ex
         except AttributeError as ex:
             logger.exception("Exception occured: %s", ex)
+            raise ex
         except Exception as ex:
             raise ex
 
     def ingest_data(self, skip_existing=False):
         """Method to be invoked to ingest data"""
         try:
-            if os.path.exists(self.config.data_train_path) and os.path.exists(self.config.data_test_path):
-                if skip_existing:
-                    logger.info('Data already exists. Skipping ingestion.')
-                else:
-                    logger.info('Data already exists. Deleting existing data.')
-                    remove_directories(
-                        [self.config.data_train_path, self.config.data_test_path])
-                    self.train_test_split()
-            else:
+            skip_processing = self.skip_processing(
+                train_path=self.config.data_train_path, test_path=self.config.data_test_path, skip_existing=skip_existing)
+            if not skip_processing:
                 self.train_test_split()
-        except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
         except Exception as ex:
             raise ex

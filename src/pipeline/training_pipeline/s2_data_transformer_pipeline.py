@@ -1,5 +1,5 @@
 """
-Module to create a pipeline to ingest data
+Module to create a pipeline to transform data
 """
 from src import logger
 from src.components.data.data_transformer import DataTransformer
@@ -13,9 +13,12 @@ class DataTransformerPipeline():
 
     def main(self):
         """Main method to read configuration and transform data"""
-        config=ConfigurationManager()
-        data_transformer=DataTransformer(config=config.get_data_config())
-        data_transformer.transform_data()
+        try:
+            config=ConfigurationManager()
+            data_transformer=DataTransformer(config=config.get_data_config())
+            data_transformer.transform_data()
+        except Exception as ex:
+            raise ex
 
 
 if __name__ == '__main__':
@@ -27,4 +30,3 @@ if __name__ == '__main__':
         logger.info("%s completed\nx==========x", STAGE_NAME)
     except Exception as e:
         logger.exception(e)
-        raise e

@@ -16,23 +16,13 @@ try:
     data_ingestion_pipe = DataIngestionPipeline()
     data_ingestion_pipe.main()
     logger.info("%s completed\nx==========x", STAGE_NAME)
-except Exception as e:
-    logger.exception(e)
-    raise e
 
-
-try:
     STAGE_NAME = "Data Transformation stage"
     logger.info("%s started <<<<<<", STAGE_NAME)
     data_tranformer_pipe = DataTransformerPipeline()
     data_tranformer_pipe.main()
     logger.info("%s completed\nx==========x", STAGE_NAME)
-except Exception as e:
-    logger.exception(e)
-    raise e
 
-
-try:
     STAGE_NAME = "Model Training stage"
     logger.info("%s started", STAGE_NAME)
     model_trainer_pipe = ModelTrainerPipeline()
@@ -40,4 +30,3 @@ try:
     logger.info("%s completed\nx==========x", STAGE_NAME)
 except Exception as e:
     logger.exception(e)
-    raise e

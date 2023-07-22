@@ -4,8 +4,8 @@ data:
   data_test_path: artifacts/data/original_data/test_data.csv
   data_target_column: math_score
   data_transformer_path: artifacts/data/transformed_data/data_transformer.pkl
-  data_transformed_X_train_array_path: artifacts/data/transformed_data/transformed_X_train_arr.npy
-  data_transformed_X_test_array_path: artifacts/data/transformed_data/transformed_X_test_arr.npy
+  data_transformed_x_train_array_path: artifacts/data/transformed_data/transformed_x_train_arr.npy
+  data_transformed_x_test_array_path: artifacts/data/transformed_data/transformed_x_test_arr.npy
   data_transformed_y_train_array_path: artifacts/data/transformed_data/transformed_y_train_arr.npy
   data_transformed_y_test_array_path: artifacts/data/transformed_data/transformed_y_test_arr.npy
   
