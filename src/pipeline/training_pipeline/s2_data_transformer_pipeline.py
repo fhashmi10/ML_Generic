@@ -18,15 +18,13 @@ class DataTransformerPipeline():
             data_transformer=DataTransformer(config=config.get_data_config())
             data_transformer.transform_data()
         except Exception as ex:
-            raise ex
+            logger.error("Error in data transformation %s", ex)
 
 
 if __name__ == '__main__':
-    try:
-        STAGE_NAME = "Data Transformation stage"
-        logger.info("%s started <<<<<<", STAGE_NAME)
-        data_tranformer_pipe = DataTransformerPipeline()
-        data_tranformer_pipe.transform()
-        logger.info("%s completed\nx==========x", STAGE_NAME)
-    except Exception as e:
-        logger.exception(e)
+    STAGE_NAME = "Data Transformation stage"
+    logger.info("%s started <<<<<<", STAGE_NAME)
+    data_tranformer_pipe = DataTransformerPipeline()
+    data_tranformer_pipe.transform()
+    logger.info("%s completed\nx==========x", STAGE_NAME)
+    
