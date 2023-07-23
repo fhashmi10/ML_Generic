@@ -5,14 +5,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from src import logger
-from src.utils.common import remove_directories
-from src.entities.config_entity import DataConfig
+from src.utils.common import create_directories, remove_directories
+from src.entities.config_entity import DataIngestionConfig
 
 
 class DataIngestion():
     """Class to ingest data"""
 
-    def __init__(self, config: DataConfig):
+    def __init__(self, config: DataIngestionConfig):
         self.config = config
 
     @staticmethod
@@ -47,7 +47,8 @@ class DataIngestion():
 
             train_set, test_set = train_test_split(
                 data_frame, test_size=0.2, random_state=42)
-
+            create_directories([os.path.dirname(self.config.data_train_path),
+                                os.path.dirname(self.config.data_test_path)])
             train_set.to_csv(self.config.data_train_path,
                              index=False, header=True)
             test_set.to_csv(self.config.data_test_path,

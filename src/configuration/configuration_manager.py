@@ -3,7 +3,8 @@ Module to read configuration from yaml files
 """
 from src.utils.common import read_yaml_configbox, read_yaml_dict
 from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
-from src.entities.config_entity import (DataConfig, ModelConfig)
+from src.entities.config_entity import (
+    DataIngestionConfig, DataTransformationConfig, ModelConfig)
 from src import logger
 
 from ensure import EnsureError
@@ -22,19 +23,31 @@ class ConfigurationManager:
         except Exception as ex:
             raise ex
 
-    def get_data_config(self) -> DataConfig:
+    def get_data_ingestion_config(self) -> DataIngestionConfig:
         """Method to map data configurations"""
         try:
-            config = self.config.data
-            data_config = DataConfig(data_original_path=config.data_original_path,
-                                     data_train_path=config.data_train_path,
-                                     data_test_path=config.data_test_path,
-                                     data_target_column=config.data_target_column,
-                                     data_transformer_path=config.data_transformer_path,
-                                     data_transformed_x_train_array_path=config.data_transformed_x_train_array_path,
-                                     data_transformed_x_test_array_path=config.data_transformed_x_test_array_path,
-                                     data_transformed_y_train_array_path=config.data_transformed_y_train_array_path,
-                                     data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
+            config = self.config.data_ingestion
+            data_config = DataIngestionConfig(data_original_path=config.data_original_path,
+                                              data_train_path=config.data_train_path,
+                                              data_test_path=config.data_test_path)
+            return data_config
+        except AttributeError as ex:
+            logger.exception("Exception occured: %s", ex)
+            raise ex
+        except Exception as ex:
+            raise ex
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        """Method to map data configurations"""
+        try:
+            config = self.config.data_transformation
+            data_config = DataTransformationConfig(
+                                                   data_target_column=config.data_target_column,
+                                                   data_transformer_path=config.data_transformer_path,
+                                                   data_transformed_x_train_array_path=config.data_transformed_x_train_array_path,
+                                                   data_transformed_x_test_array_path=config.data_transformed_x_test_array_path,
+                                                   data_transformed_y_train_array_path=config.data_transformed_y_train_array_path,
+                                                   data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
             return data_config
         except AttributeError as ex:
             logger.exception("Exception occured: %s", ex)
@@ -61,6 +74,8 @@ class ConfigurationManager:
             params = self.get_model_params(self.params_file_path)
             model_config = ModelConfig(
                 model_trained_path=config.model_trained_path,
+                final_model_path=config.final_model_path,
+                evaluation_metric=config.evaluation_metric,
                 model_params=params)
             return model_config
         except AttributeError as ex:

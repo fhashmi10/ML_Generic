@@ -122,3 +122,15 @@ def save_json(file_path: Path, data: dict):
         raise ex
     except Exception as ex:
         raise ex
+
+@staticmethod
+def get_file_paths_in_folder(folder_path: Path) -> list:
+    """Method to get all file paths in a folder"""
+    try:
+        file_paths = [os.path.join(folder_path,f) for f in os.listdir(folder_path)]
+        return file_paths
+    except IOError as ex:
+        logger.exception("Error getting file names from: %s", folder_path)
+        raise ex
+    except Exception as ex:
+        raise ex

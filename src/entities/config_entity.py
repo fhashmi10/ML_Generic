@@ -6,11 +6,15 @@ from pathlib import Path
 
 
 @dataclass(frozen=True)
-class DataConfig:
+class DataIngestionConfig:
     """Data class for data configurations"""
     data_original_path: Path
     data_train_path: Path
     data_test_path: Path
+
+@dataclass(frozen=True)
+class DataTransformationConfig:
+    """Data class for data transform configurations"""
     data_target_column: str
     data_transformer_path: Path
     data_transformed_x_train_array_path: Path
@@ -18,9 +22,10 @@ class DataConfig:
     data_transformed_y_train_array_path: Path
     data_transformed_y_test_array_path: Path
 
-
 @dataclass(frozen=True)
 class ModelConfig:
     """Data class for Model configuration"""
     model_trained_path: Path
+    final_model_path: Path
+    evaluation_metric: list
     model_params: dict

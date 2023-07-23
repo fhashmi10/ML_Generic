@@ -1,7 +1,9 @@
-data:
-  data_original_path: artifacts/data/original_data/stud.csv
-  data_train_path: artifacts/data/original_data/train_data.csv
-  data_test_path: artifacts/data/original_data/test_data.csv
+data_ingestion:
+  data_original_path: data/stud.csv
+  data_train_path: artifacts/data/split_data/train_data.csv
+  data_test_path: artifacts/data/split_data/test_data.csv
+
+data_transformation:
   data_target_column: math_score
   data_transformer_path: artifacts/data/transformed_data/data_transformer.pkl
   data_transformed_x_train_array_path: artifacts/data/transformed_data/transformed_x_train_arr.npy
@@ -11,4 +13,6 @@ data:
   
 
 model:
-  model_trained_path: artifacts/models/trained_model/model.h5
+  model_trained_path: artifacts/models/trained_model/
+  final_model_path: artifacts/models/final_model/model.pkl
+  evaluation_metric: r2_score

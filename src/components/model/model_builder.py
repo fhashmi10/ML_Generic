@@ -8,28 +8,28 @@ from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
 from src.components.model.model_trainer import ModelTrainer
-from src.entities.config_entity import DataConfig, ModelConfig
+from src.entities.config_entity import DataTransformationConfig, ModelConfig
 
 
 class ModelBuilder:
     """Class to build models"""
 
-    def __init__(self, data_config=DataConfig, model_config=ModelConfig):
+    def __init__(self, data_config=DataTransformationConfig, model_config=ModelConfig):
         self.data_config = data_config
         self.model_config = model_config
 
     def train_models(self):
         """Method to invoke model training"""
         try:
-            models = {
-                "LinearRegression": LinearRegression(),
-                "DecisionTreeRegressor": DecisionTreeRegressor(),
-                "RandomForestRegressor": RandomForestRegressor(),
-                "AdaBoostRegressor": AdaBoostRegressor(),
-                "GradientBoostRegressor": GradientBoostingRegressor(),
-                "XGBRegressor": XGBRegressor(),
-                "CatBoostRegressor": CatBoostRegressor(verbose=False),
-            }
+            models = [
+                      LinearRegression(),
+                      DecisionTreeRegressor(),
+                      RandomForestRegressor(),
+                      AdaBoostRegressor(),
+                      GradientBoostingRegressor(),
+                      XGBRegressor(),
+                      CatBoostRegressor(verbose=False),
+                      ]
             model_trainer = ModelTrainer(models=models,
                                          data_config=self.data_config, model_config=self.model_config)
             model_trainer.train_models()

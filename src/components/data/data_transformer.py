@@ -8,13 +8,14 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src import logger
 from src.utils.common import (save_object)
-from src.entities.config_entity import DataConfig
+from src.entities.config_entity import DataIngestionConfig, DataTransformationConfig
 
 
 class DataTransformer():
     """Class to transform data"""
 
-    def __init__(self, config: DataConfig):
+    def __init__(self, data_ingestion_config: DataIngestionConfig, config: DataTransformationConfig):
+        self.data_ingestion_config = data_ingestion_config
         self.config = config
 
     @staticmethod
@@ -49,8 +50,8 @@ class DataTransformer():
         """Method to invoke data transformation"""
         try:
             #todo: split this function
-            df_train = pd.read_csv(self.config.data_train_path)
-            df_test = pd.read_csv(self.config.data_test_path)
+            df_train = pd.read_csv(self.data_ingestion_config.data_train_path)
+            df_test = pd.read_csv(self.data_ingestion_config.data_test_path)
 
             target_column = self.config.data_target_column
             x_train = df_train.drop(columns=[target_column], axis=1)

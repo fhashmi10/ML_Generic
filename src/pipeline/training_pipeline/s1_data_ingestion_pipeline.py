@@ -16,10 +16,10 @@ class DataIngestionPipeline:
         """Method to read configuration and ingest data"""
         try:
             config = ConfigurationManager()
-            data_ingestion = DataIngestion(config=config.get_data_config())
+            data_ingestion = DataIngestion(config=config.get_data_ingestion_config())
             data_ingestion.ingest_data()
         except Exception as ex:
-            logger.error("Error in data ingestion %s", ex)
+            logger.error("Error in data ingestion: %s", ex)
 
 
 if __name__ == '__main__':
