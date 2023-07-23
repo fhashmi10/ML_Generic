@@ -76,6 +76,7 @@ class ConfigurationManager:
                 model_trained_path=config.model_trained_path,
                 final_model_path=config.final_model_path,
                 evaluation_metric=config.evaluation_metric,
+                evaluation_score_json_path=config.evaluation_score_json_path,
                 model_params=params)
             return model_config
         except AttributeError as ex:

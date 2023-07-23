@@ -2,6 +2,7 @@
 import os
 import pandas as pd
 from src.utils.common import load_object
+from src.configuration.configuration_manager import ConfigurationManager
 from src import logger
 
 
@@ -14,15 +15,16 @@ class ModelPredictionPipeline:
     def predict(self, features_dict: dict):
         """Method to predict"""
         try:
-            preprocessor_path = os.path.join(
-                'artifacts', 'data/transformed_data/data_transformer.pkl')
-            preprocessor = load_object(file_path=preprocessor_path)
+            config = ConfigurationManager()
+            data_config=config.get_data_transformation_config() 
+            model_config=config.get_model_config()
+            
+            preprocessor = load_object(file_path=data_config.data_transformer_path)
             logger.info("loaded data transformer successfully.")
             features_df=pd.DataFrame(features_dict, index=[0])
             tranformed_data = preprocessor.transform(features_df)
 
-            model_path = os.path.join("artifacts", "models/trained_model/model.h5")
-            model = load_object(file_path=model_path)
+            model = load_object(file_path=model_config.final_model_path)
             logger.info("loaded model successfully.")
             prediction = round(model.predict(tranformed_data)[0],0)
             logger.info("Predicted %s", prediction)

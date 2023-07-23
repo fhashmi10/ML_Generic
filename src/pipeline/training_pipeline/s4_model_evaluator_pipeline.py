@@ -16,7 +16,7 @@ class ModelEvaluatorPipeline():
             config = ConfigurationManager()
             model_evaluator = ModelEvaluator(data_config=config.get_data_transformation_config(
             ), model_config=config.get_model_config())
-            model_evaluator.evaluate_model()
+            model_evaluator.evaluate()
         except Exception as ex:
             logger.error("Error training model: %s", ex)
 

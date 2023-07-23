@@ -16,3 +16,4 @@ model:
   model_trained_path: artifacts/models/trained_model/
   final_model_path: artifacts/models/final_model/model.pkl
   evaluation_metric: r2_score
+  evaluation_score_json_path: artifacts/models/evaluation_score/scores.json

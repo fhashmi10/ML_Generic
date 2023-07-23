@@ -1,9 +1,11 @@
 """Module to evaluate models"""
-import numpy as np
+import os
 from pathlib import Path
+import numpy as np
 from sklearn.metrics import r2_score
 from src.entities.config_entity import DataTransformationConfig, ModelConfig
-from src.utils.common import get_file_paths_in_folder, save_object, load_object, save_json
+from src.utils.common import create_directories, get_file_paths_in_folder, \
+    save_object, load_object, save_json
 from src import logger
 
 
@@ -14,7 +16,7 @@ class ModelEvaluator:
         self.data_config = data_config
         self.model_config = model_config
 
-    def evaluate(self, eval_metric: str, actual, predicted):
+    def evaluate_metric(self, eval_metric: str, actual, predicted):
         """Method to invoke model evaluation"""
         try:
             return getattr(self, eval_metric)(actual, predicted)
@@ -22,6 +24,7 @@ class ModelEvaluator:
             logger.error("Error getting metric function: %s", ex)
             raise ex
         except Exception as ex:
+            logger.error("Exception: %s", ex)
             raise ex
 
     @staticmethod
@@ -31,6 +34,7 @@ class ModelEvaluator:
             score = r2_score(actual, predicted)
             return score
         except Exception as ex:
+            logger.error("Exception: %s", ex)
             raise ex
 
     def load_test_data(self):
@@ -42,33 +46,39 @@ class ModelEvaluator:
                 self.data_config.data_transformed_y_test_array_path)
             return x_test, y_test
         except Exception as ex:
+            logger.error("Exception: %s", ex)
             raise ex
 
-    def evaluate_model(self):
+    def evaluate_models(self, file_paths: list, x_test, y_test):
         """Method to evaluate models"""
         try:
             trained_models = {}
             result = {}
-            # load test data
-            x_test, y_test = self.load_test_data()
-            file_paths = get_file_paths_in_folder(
-                self.model_config.model_trained_path)
 
             for i, file_path in enumerate(file_paths):
                 model = load_object(file_path=file_path)
                 model_name = type(model).__name__
                 logger.info("loaded %s successfully.", model_name)
                 y_test_pred = model.predict(x_test)
-                test_model_score = self.evaluate(
+                test_model_score = self.evaluate_metric(
                     eval_metric=self.model_config.evaluation_metric, actual=y_test, predicted=y_test_pred)
                 logger.info("Evaluated %s with %s: %s", model_name,
                             self.model_config.evaluation_metric, test_model_score)
                 trained_models[model_name] = model
                 result[model_name] = test_model_score
+            return trained_models, result
+        except Exception as ex:
+            logger.error("Exception: %s", ex)
+            raise ex
 
+    def save_best_model(self, trained_models, result):
+        """Method to save best model and result"""
+        try:
             logger.info("Saving Results to json file")
-            # todo: scores json path in config file
-            save_json(file_path=Path("scores.json"), data=result)
+            create_directories(
+                [os.path.dirname(self.model_config.evaluation_score_json_path)])
+            save_json(file_path=Path(
+                self.model_config.evaluation_score_json_path), data=result)
             best_model_score = max(sorted(result.values()))
             best_model_name = list(result.keys())[list(
                 result.values()).index(best_model_score)]
@@ -78,4 +88,18 @@ class ModelEvaluator:
             logger.info("%s is the best model with %s as %s",
                         best_model_name, self.model_config.evaluation_metric, best_model_score)
         except Exception as ex:
+            logger.error("Exception: %s", ex)
+            raise ex
+
+    def evaluate(self):
+        """Method to evaluate models"""
+        try:
+            x_test, y_test = self.load_test_data()
+            file_paths = get_file_paths_in_folder(
+                self.model_config.model_trained_path)
+            trained_models, result = self.evaluate_models(file_paths=file_paths,
+                                                          x_test=x_test, y_test=y_test)
+            self.save_best_model(trained_models=trained_models, result=result)
+        except Exception as ex:
+            logger.error("Exception: %s", ex)
             raise ex

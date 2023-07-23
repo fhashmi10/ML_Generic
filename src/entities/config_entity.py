@@ -12,6 +12,7 @@ class DataIngestionConfig:
     data_train_path: Path
     data_test_path: Path
 
+
 @dataclass(frozen=True)
 class DataTransformationConfig:
     """Data class for data transform configurations"""
@@ -22,6 +23,7 @@ class DataTransformationConfig:
     data_transformed_y_train_array_path: Path
     data_transformed_y_test_array_path: Path
 
+
 @dataclass(frozen=True)
 class ModelConfig:
     """Data class for Model configuration"""
@@ -29,3 +31,4 @@ class ModelConfig:
     final_model_path: Path
     evaluation_metric: list
     model_params: dict
+    evaluation_score_json_path: Path
