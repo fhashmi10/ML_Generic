@@ -4,7 +4,7 @@ A generic implementation of machine learning model building tool
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install required libraries.
 
 ```bash
 pip install -r requirements.txt
