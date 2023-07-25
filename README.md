@@ -1,6 +1,6 @@
-# Foobar
+# ML Generic
 
-Foobar is a Python library for dealing with word pluralization.
+A generic implementation of machine learning model building tool
 
 ## Installation
 
@@ -11,7 +11,6 @@ pip install -r requirements.txt
 ```
 
 ## Usage
-A generic implementation of machine learning model building tool
 
 ### Data
 The data that you desire to train on can be stored under data folder in root
