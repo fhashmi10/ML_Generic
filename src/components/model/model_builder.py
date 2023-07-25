@@ -9,6 +9,7 @@ from xgboost import XGBRegressor
 
 from src.components.model.model_trainer import ModelTrainer
 from src.entities.config_entity import DataTransformationConfig, ModelConfig
+from src import logger
 
 
 class ModelBuilder:
@@ -33,5 +34,9 @@ class ModelBuilder:
             model_trainer = ModelTrainer(models=models,
                                          data_config=self.data_config, model_config=self.model_config)
             model_trainer.train_models()
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex

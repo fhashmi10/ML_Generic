@@ -34,7 +34,7 @@ class DataIngestion():
                     [train_path, test_path])
             return skip_process
         except IOError as ex:
-            logger.exception("Error in checking data file on disk: %s", str)
+            logger.exception("Error in checking data file on disk.")
             raise ex
         except Exception as ex:
             raise ex
@@ -58,7 +58,6 @@ class DataIngestion():
             logger.exception("Error saving train test data files.")
             raise ex
         except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
             raise ex
         except Exception as ex:
             raise ex
@@ -70,5 +69,9 @@ class DataIngestion():
                 train_path=self.config.data_train_path, test_path=self.config.data_test_path, skip_existing=skip_existing)
             if not skip_processing:
                 self.train_test_split()
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex

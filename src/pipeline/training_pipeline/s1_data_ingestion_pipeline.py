@@ -19,12 +19,14 @@ class DataIngestionPipeline:
             data_ingestion = DataIngestion(config=config.get_data_ingestion_config())
             data_ingestion.ingest_data()
         except Exception as ex:
-            logger.error("Error in data ingestion: %s", ex)
-
+            raise ex
 
 if __name__ == '__main__':
-    STAGE_NAME = "Data Ingestion stage"
-    logger.info("%s started", STAGE_NAME)
-    data_ingestion_pipe = DataIngestionPipeline()
-    data_ingestion_pipe.ingest()
-    logger.info("%s completed\nx==========x", STAGE_NAME)
+    try:
+        STAGE_NAME = "Data Ingestion stage"
+        logger.info("%s started", STAGE_NAME)
+        data_ingestion_pipe = DataIngestionPipeline()
+        data_ingestion_pipe.ingest()
+        logger.info("%s completed\nx==========x", STAGE_NAME)
+    except Exception as exc:
+        logger.exception("Exception occured: %s", exc)

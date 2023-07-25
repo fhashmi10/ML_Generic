@@ -36,4 +36,4 @@ try:
     model_evaluator_pipe.evaluate()
     logger.info("%s completed\nx==========x", STAGE_NAME)
 except Exception as ex:
-    logger.error("Error in main: %s", ex)
+    logger.exception("Exception in processing: %s", ex)

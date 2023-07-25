@@ -22,6 +22,8 @@ class ModelTrainer:
             y_train = np.load(
                 self.data_config.data_transformed_y_train_array_path)
             return x_train, y_train
+        except AttributeError as ex:
+            raise ex
         except Exception as ex:
             raise ex
         
@@ -34,37 +36,43 @@ class ModelTrainer:
                 model, param, cv=self.model_config.model_params['CrossValidation']['cv'])
             gsv.fit(x_train, y_train)
             return gsv.best_params_
+        except AttributeError as ex:
+            raise ex
         except Exception as ex:
             raise ex
 
     def train_models(self):
         """Method to train the models one by one"""
         try:
-            # load training data
+            # Load training data
             x_train, y_train = self.load_train_data()
 
-            # train models
-            for i, model in enumerate(self.models):
+            # Train the models
+            for model in self.models:
                 try:
                     model_name = type(model).__name__
                     param = self.model_config.model_params[model_name]
                 except KeyError:
-                    # to handle when there are no model parameters
+                    # When there are no model parameters
                     param = {}
 
-                # get best params using grid search
+                # Get best params using grid search
                 best_params = self.perform_grid_search(
                     model=model, param=param, x_train=x_train, y_train=y_train)
 
-                # use gsv best params to train model
+                # Use gsv best params to train model
                 model.set_params(**best_params)
                 logger.info("Training started for %s", model_name)
                 model.fit(x_train, y_train)
                 logger.info("Training completed for %s", model_name)
 
+                # Save the model
                 model_save_path=self.model_config.model_trained_path+"/"+model_name+".pkl"
                 save_object(file_path=model_save_path, obj=model)
                 logger.info("%s  model saved to disk", model_name)
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
         except Exception as ex:
-            logger.exception(ex)
+            logger.exception("Exception occured: %s", ex)
             raise ex

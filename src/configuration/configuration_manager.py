@@ -18,7 +18,7 @@ class ConfigurationManager:
             self.config = read_yaml_configbox(config_file_path)
             self.params_file_path = params_file_path
         except EnsureError as ex:
-            logger.exception("Problem reading parameters yaml file: %s", ex)
+            logger.exception("Problem reading parameters yaml file.")
             raise ex
         except Exception as ex:
             raise ex
@@ -32,7 +32,6 @@ class ConfigurationManager:
                                               data_test_path=config.data_test_path)
             return data_config
         except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
             raise ex
         except Exception as ex:
             raise ex
@@ -50,7 +49,6 @@ class ConfigurationManager:
                                                    data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
             return data_config
         except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
             raise ex
         except Exception as ex:
             raise ex
@@ -62,7 +60,7 @@ class ConfigurationManager:
             params_dict = read_yaml_dict(params_file_path)
             return params_dict
         except EnsureError as ex:
-            logger.exception("Problem reading parameters yaml file: %s", ex)
+            logger.exception("Problem reading parameters yaml file.")
             raise ex
         except Exception as ex:
             raise ex
@@ -80,7 +78,8 @@ class ConfigurationManager:
                 model_params=params)
             return model_config
         except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
+            logger.exception("Error finding attribute: %s", ex)
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex

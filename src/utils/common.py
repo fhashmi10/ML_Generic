@@ -21,7 +21,7 @@ def read_yaml_dict(path_to_yaml: Path) -> dict:
             logger.info("yaml file loaded successfully: %s", path_to_yaml)
             return yaml_content
     except FileNotFoundError as ex:
-        logger.exception(ex)
+        logger.exception("yaml file not found: %s", path_to_yaml)
         raise ex
     except IOError as ex:
         logger.exception("yaml file is empty: %s", path_to_yaml)

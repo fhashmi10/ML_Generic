@@ -21,10 +21,9 @@ class ModelEvaluator:
         try:
             return getattr(self, eval_metric)(actual, predicted)
         except AttributeError as ex:
-            logger.error("Error getting metric function: %s", ex)
+            logger.exception("Error getting metric function: %s", ex)
             raise ex
         except Exception as ex:
-            logger.error("Exception: %s", ex)
             raise ex
 
     @staticmethod
@@ -34,7 +33,6 @@ class ModelEvaluator:
             score = r2_score(actual, predicted)
             return score
         except Exception as ex:
-            logger.error("Exception: %s", ex)
             raise ex
 
     def load_test_data(self):
@@ -45,8 +43,9 @@ class ModelEvaluator:
             y_test = np.load(
                 self.data_config.data_transformed_y_test_array_path)
             return x_test, y_test
+        except AttributeError as ex:
+            raise ex
         except Exception as ex:
-            logger.error("Exception: %s", ex)
             raise ex
 
     def evaluate_models(self, file_paths: list, x_test, y_test):
@@ -67,8 +66,9 @@ class ModelEvaluator:
                 trained_models[model_name] = model
                 result[model_name] = test_model_score
             return trained_models, result
+        except AttributeError as ex:
+            raise ex
         except Exception as ex:
-            logger.error("Exception: %s", ex)
             raise ex
 
     def save_best_model(self, trained_models, result):
@@ -87,19 +87,26 @@ class ModelEvaluator:
                 file_path=self.model_config.final_model_path, obj=best_model)
             logger.info("%s is the best model with %s as %s",
                         best_model_name, self.model_config.evaluation_metric, best_model_score)
+        except AttributeError as ex:
+            raise ex
         except Exception as ex:
-            logger.error("Exception: %s", ex)
             raise ex
 
     def evaluate(self):
         """Method to evaluate models"""
         try:
+            # Load test data
             x_test, y_test = self.load_test_data()
+            # Evaluate models
             file_paths = get_file_paths_in_folder(
                 self.model_config.model_trained_path)
             trained_models, result = self.evaluate_models(file_paths=file_paths,
                                                           x_test=x_test, y_test=y_test)
+            # Save the best model
             self.save_best_model(trained_models=trained_models, result=result)
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
         except Exception as ex:
-            logger.error("Exception: %s", ex)
+            logger.exception("Exception occured: %s", ex)
             raise ex

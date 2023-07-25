@@ -14,10 +14,26 @@ from src.entities.config_entity import DataIngestionConfig, DataTransformationCo
 class DataTransformer():
     """Class to transform data"""
 
-    def __init__(self, data_ingestion_config: DataIngestionConfig, config: DataTransformationConfig):
-        self.data_ingestion_config = data_ingestion_config
-        self.config = config
+    def __init__(self, ingestion_config: DataIngestionConfig, transformation_config: DataTransformationConfig):
+        self.ingestion_config = ingestion_config
+        self.transformation_config = transformation_config
 
+    def get_input_data(self):
+        """Method to get input data"""
+        try:
+            df_train = pd.read_csv(self.ingestion_config.data_train_path)
+            df_test = pd.read_csv(self.ingestion_config.data_test_path)
+            target_column = self.transformation_config.data_target_column
+            x_train = df_train.drop(columns=[target_column], axis=1)
+            y_train = df_train[target_column]
+            x_test = df_test.drop(columns=[target_column], axis=1)
+            y_test = df_test[target_column]
+            return x_train, y_train, x_test, y_test
+        except AttributeError as ex:
+            raise ex
+        except Exception as ex:
+            raise ex
+        
     @staticmethod
     def get_data_transformer(num_columns: list[str], cat_columns: list[str]) -> object:
         """Method to get data transformer object holding transformation pipeline"""
@@ -49,36 +65,29 @@ class DataTransformer():
     def transform_data(self):
         """Method to invoke data transformation"""
         try:
-            #todo: split this function
-            df_train = pd.read_csv(self.data_ingestion_config.data_train_path)
-            df_test = pd.read_csv(self.data_ingestion_config.data_test_path)
-
-            target_column = self.config.data_target_column
-            x_train = df_train.drop(columns=[target_column], axis=1)
-            y_train = df_train[target_column]
-            x_test = df_test.drop(columns=[target_column], axis=1)
-            y_test = df_test[target_column]
+            x_train, y_train, x_test, y_test = self.get_input_data()
 
             numerical_cols = x_train.select_dtypes(exclude="object").columns
             categorical_cols = x_train.select_dtypes(include="object").columns
-
             data_transformer = self.get_data_transformer(
                 numerical_cols, categorical_cols)
             data_transformer.fit(x_train)
-            save_object(data_transformer, self.config.data_transformer_path)
-            logger.info("Saved data transformer object: %s", self.config.data_transformer_path)
+            save_object(data_transformer, self.transformation_config.data_transformer_path)
+            logger.info("Saved data transformer object: %s",
+                        self.transformation_config.data_transformer_path)
 
-            np.save(self.config.data_transformed_x_train_array_path,
+            np.save(self.transformation_config.data_transformed_x_train_array_path,
                     data_transformer.transform(x_train))
-            np.save(self.config.data_transformed_x_test_array_path,
+            np.save(self.transformation_config.data_transformed_x_test_array_path,
                     data_transformer.transform(x_test))
-            np.save(self.config.data_transformed_y_train_array_path,
+            np.save(self.transformation_config.data_transformed_y_train_array_path,
                     np.array(y_train))
-            np.save(self.config.data_transformed_y_test_array_path,
+            np.save(self.transformation_config.data_transformed_y_test_array_path,
                     np.array(y_test))
             logger.info("Transformed data arrays are saved to disk")
         except AttributeError as ex:
-            logger.exception("Exception occured: %s", ex)
+            logger.exception("Error finding attribute: %s", ex)
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex

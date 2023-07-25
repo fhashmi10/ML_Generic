@@ -35,7 +35,8 @@ def predict():
         results = predict_pipeline.predict(features_dict=features_dict)
         return render_template('index.html', results=results)
     except Exception as ex:
-        logger.error("Error in prediction %s", ex)
+        logger.exception("Error in prediction %s", ex)
+        return render_template('index.html', results="Exception occured: Check logs")
 
 
 if __name__ == "__main__":
