@@ -1,5 +1,9 @@
 
-"""Module to build models"""
+"""
+Module to build models
+This class can be extended to add more models or make changes to models
+You can also choose to save the built base models and separate out training
+"""
 from catboost import CatBoostRegressor
 from sklearn.ensemble import (AdaBoostRegressor, GradientBoostingRegressor,
                               RandomForestRegressor)
