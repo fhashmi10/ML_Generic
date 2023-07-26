@@ -1,22 +1,25 @@
 """App module for flask app exposing endpoints"""
 from flask import Flask, request, render_template
+from flask_cors import CORS, cross_origin
 
 from src import logger
 from src.pipeline.prediction_pipeline.model_prediction_pipeline import ModelPredictionPipeline
 
-application = Flask(__name__)
-app = application
+app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
+@cross_origin()
 def index():
-    """root API endpoint"""
+    """Root API endpoint"""
     return render_template('index.html')
 
 
 @app.route('/predict', methods=['GET', 'POST'])
+@cross_origin()
 def predict():
-    """predict endpoint"""
+    """Predict endpoint"""
     try:
         if request.method == 'GET':
             return render_template('index.html')

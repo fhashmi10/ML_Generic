@@ -84,7 +84,7 @@ def remove_directories(path_to_directories: list, verbose=True):
 
 
 @staticmethod
-def save_object(obj, file_path):
+def save_object(obj, file_path: Path):
     """Method to save an object to a file"""
     try:
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -98,7 +98,7 @@ def save_object(obj, file_path):
 
 
 @staticmethod
-def load_object(file_path):
+def load_object(file_path: Path):
     """Method to load an object from a file"""
     try:
         with open(file_path, "rb") as file_obj:

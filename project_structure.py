@@ -23,7 +23,7 @@ list_files = [
     f"{SOURCE_PATH}/components/data/__init__.py",
     f"{SOURCE_PATH}/components/data/data_ingestion.py",
     f"{SOURCE_PATH}/components/data/data_transformer.py",
-    f"{SOURCE_PATH}/components/model/__init__.py",
+	f"{SOURCE_PATH}/components/model/__init__.py",
     f"{SOURCE_PATH}/components/model/model_builder.py",
     f"{SOURCE_PATH}/components/model/model_trainer.py",
     f"{SOURCE_PATH}/pipeline/__init__.py",
