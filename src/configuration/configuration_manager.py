@@ -1,13 +1,12 @@
 """
 Module to read configuration from yaml files
 """
+from ensure import EnsureError
 from src.utils.common import read_yaml_configbox, read_yaml_dict
 from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.entities.config_entity import (
     DataIngestionConfig, DataTransformationConfig, ModelConfig)
 from src import logger
-
-from ensure import EnsureError
 
 
 class ConfigurationManager:
@@ -21,6 +20,7 @@ class ConfigurationManager:
             logger.exception("Problem reading parameters yaml file.")
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
@@ -32,8 +32,10 @@ class ConfigurationManager:
                                               data_test_path=config.data_test_path)
             return data_config
         except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex
 
     def get_data_transformation_config(self) -> DataTransformationConfig:
@@ -49,8 +51,10 @@ class ConfigurationManager:
                                                    data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
             return data_config
         except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex
 
     @staticmethod
@@ -63,6 +67,7 @@ class ConfigurationManager:
             logger.exception("Problem reading parameters yaml file.")
             raise ex
         except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
             raise ex
 
     def get_model_config(self) -> ModelConfig:

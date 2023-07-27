@@ -1,7 +1,4 @@
 """Module to create prediction pipeline"""
-import os
-import pandas as pd
-from src.utils.common import load_object
 from src.configuration.configuration_manager import ConfigurationManager
 from src.components.model.model_predictor import ModelPredictor
 from src import logger
