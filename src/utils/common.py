@@ -1,9 +1,9 @@
 """Module to hold all common util methods"""
 import os
-import pickle
 import shutil
 from pathlib import Path
 import json
+import pickle
 import yaml
 from box import ConfigBox, exceptions
 
@@ -36,9 +36,9 @@ def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
     A configbox helps in accessing yaml contents with . syntax"""
     try:
         with open(path_to_yaml, encoding='utf8') as yaml_file:
-            content = yaml.safe_load(yaml_file)
+            yaml_content = yaml.safe_load(yaml_file)
             logger.info("yaml file loaded successfully: %s", path_to_yaml)
-            return ConfigBox(content)
+            return ConfigBox(yaml_content)
     except exceptions.BoxValueError as ex:
         logger.exception("yaml file is empty: %s", path_to_yaml)
         raise ex
@@ -47,14 +47,15 @@ def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
 
 
 @staticmethod
-def create_directories(path_to_directories: list, verbose=True):
+def create_directories(path_to_directories: list, is_file_path=False):
     """Method to create directories"""
     try:
-        for path in path_to_directories:
-            if not os.path.exists(path):
-                os.makedirs(path, exist_ok=True)
-                if verbose:
-                    logger.info("created directory at %s:", path)
+        for dir_path in path_to_directories:
+            if not os.path.exists(dir_path):
+                if is_file_path:
+                    dir_path = os.path.dirname(os.path.abspath(dir_path))
+                os.makedirs(dir_path, exist_ok=True)
+                logger.info("created directory at %s:", dir_path)
     except IOError as ex:
         logger.exception("Error creating directories: %s", path_to_directories)
         raise ex
@@ -63,19 +64,17 @@ def create_directories(path_to_directories: list, verbose=True):
 
 
 @staticmethod
-def remove_directories(path_to_directories: list, verbose=True):
+def remove_directories(path_to_directories: list):
     """Method to remove directories"""
     try:
         for path in path_to_directories:
             if os.path.exists(path):
                 if os.path.isdir(path):
                     shutil.rmtree(path)
-                    if verbose:
-                        logger.info("removed directory at %s:", path)
+                    logger.info("removed directory at %s:", path)
                 elif os.path.isfile(path):
                     os.remove(path)
-                    if verbose:
-                        logger.info("removed file at %s:", path)
+                    logger.info("removed file at %s:", path)
     except IOError as ex:
         logger.exception("Error removing directories: %s", path_to_directories)
         raise ex
@@ -111,9 +110,10 @@ def load_object(file_path: Path):
 
 
 @staticmethod
-def save_json(file_path: Path, data: dict):
+def save_json(file_path: str, data: dict):
     """Method to dump data to a json file"""
     try:
+        file_path = Path(file_path)
         with open(file_path, "w", encoding="utf8") as file:
             json.dump(data, file, indent=4)
         logger.info("json file saved at: %s", file_path)
@@ -122,6 +122,22 @@ def save_json(file_path: Path, data: dict):
         raise ex
     except Exception as ex:
         raise ex
+
+
+@staticmethod
+def load_json(file_path: Path) -> ConfigBox:
+    """Method to load data from a json file"""
+    try:
+        with open(file_path, encoding="utf8") as file:
+            content = json.load(file)
+        logger.info("json file loaded succesfully from: %s", file_path)
+        return ConfigBox(content)
+    except IOError as ex:
+        logger.exception("Error loading json from: %s", file_path)
+        raise ex
+    except Exception as ex:
+        raise ex
+
 
 @staticmethod
 def get_file_paths_in_folder(folder_path: Path) -> list:

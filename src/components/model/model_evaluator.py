@@ -1,6 +1,4 @@
 """Module to evaluate models"""
-import os
-from pathlib import Path
 import numpy as np
 from sklearn.metrics import r2_score
 from src.entities.config_entity import DataTransformationConfig, ModelConfig
@@ -76,9 +74,9 @@ class ModelEvaluator:
         try:
             logger.info("Saving Results to json file")
             create_directories(
-                [os.path.dirname(self.model_config.evaluation_score_json_path)])
-            save_json(file_path=Path(
-                self.model_config.evaluation_score_json_path), data=result)
+                [self.model_config.evaluation_score_json_path], is_file_path=True)
+            save_json(file_path=
+                self.model_config.evaluation_score_json_path, data=result)
             best_model_score = max(sorted(result.values()))
             best_model_name = list(result.keys())[list(
                 result.values()).index(best_model_score)]

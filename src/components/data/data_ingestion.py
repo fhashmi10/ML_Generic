@@ -47,8 +47,8 @@ class DataIngestion():
 
             train_set, test_set = train_test_split(
                 data_frame, test_size=0.2, random_state=42)
-            create_directories([os.path.dirname(self.config.data_train_path),
-                                os.path.dirname(self.config.data_test_path)])
+            create_directories([self.config.data_train_path,
+                                self.config.data_test_path], is_file_path=True)
             train_set.to_csv(self.config.data_train_path,
                              index=False, header=True)
             test_set.to_csv(self.config.data_test_path,
