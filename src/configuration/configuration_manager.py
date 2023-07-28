@@ -12,12 +12,19 @@ from src import logger
 class ConfigurationManager:
     """Configuration manager class to read configuration files"""
 
+    def __new__(cls):
+        """ Make class singleton - so init only runs once"""
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(ConfigurationManager, cls).__new__(cls)
+        return cls.instance
+
     def __init__(self, config_file_path=CONFIG_FILE_PATH, params_file_path=PARAMS_FILE_PATH):
         try:
             self.config = read_yaml_configbox(config_file_path)
+            self.params_dict = read_yaml_dict(params_file_path)
             self.params_file_path = params_file_path
         except EnsureError as ex:
-            logger.exception("Problem reading parameters yaml file.")
+            logger.exception("Problem reading yaml file.")
             raise ex
         except Exception as ex:
             logger.exception("Exception occured: %s", ex)
@@ -57,24 +64,11 @@ class ConfigurationManager:
             logger.exception("Exception occured: %s", ex)
             raise ex
 
-    @staticmethod
-    def get_model_params(params_file_path: str) -> dict:
-        """Method to get model parameters"""
-        try:
-            params_dict = read_yaml_dict(params_file_path)
-            return params_dict
-        except EnsureError as ex:
-            logger.exception("Problem reading parameters yaml file.")
-            raise ex
-        except Exception as ex:
-            logger.exception("Exception occured: %s", ex)
-            raise ex
-
     def get_model_config(self) -> ModelConfig:
         """Method to map model configurations"""
         try:
             config = self.config.model
-            params = self.get_model_params(self.params_file_path)
+            params = self.params_dict
             model_config = ModelConfig(
                 model_trained_path=config.model_trained_path,
                 final_model_path=config.final_model_path,
