@@ -66,7 +66,9 @@ class DataIngestion():
         """Method to be invoked to ingest data"""
         try:
             skip_processing = self.skip_processing(
-                train_path=self.config.data_train_path, test_path=self.config.data_test_path, skip_existing=skip_existing)
+                train_path=self.config.data_train_path,
+                test_path=self.config.data_test_path,
+                skip_existing=skip_existing)
             if not skip_processing:
                 self.train_test_split()
         except AttributeError as ex:

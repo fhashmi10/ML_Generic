@@ -52,13 +52,14 @@ class ModelEvaluator:
             trained_models = {}
             result = {}
 
-            for i, file_path in enumerate(file_paths):
+            for file_path in file_paths:
                 model = load_object(file_path=file_path)
                 model_name = type(model).__name__
                 logger.info("loaded %s successfully.", model_name)
                 y_test_pred = model.predict(x_test)
                 test_model_score = self.evaluate_metric(
-                    eval_metric=self.model_config.evaluation_metric, actual=y_test, predicted=y_test_pred)
+                    eval_metric=self.model_config.evaluation_metric,
+                    actual=y_test, predicted=y_test_pred)
                 logger.info("Evaluated %s with %s: %s", model_name,
                             self.model_config.evaluation_metric, test_model_score)
                 trained_models[model_name] = model
@@ -75,8 +76,8 @@ class ModelEvaluator:
             logger.info("Saving Results to json file")
             create_directories(
                 [self.model_config.evaluation_score_json_path], is_file_path=True)
-            save_json(file_path=
-                self.model_config.evaluation_score_json_path, data=result)
+            save_json(
+                file_path=self.model_config.evaluation_score_json_path, data=result)
             best_model_score = max(sorted(result.values()))
             best_model_name = list(result.keys())[list(
                 result.values()).index(best_model_score)]

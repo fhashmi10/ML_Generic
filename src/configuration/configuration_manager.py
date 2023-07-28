@@ -43,12 +43,12 @@ class ConfigurationManager:
         try:
             config = self.config.data_transformation
             data_config = DataTransformationConfig(
-                                                   data_target_column=config.data_target_column,
-                                                   data_transformer_path=config.data_transformer_path,
-                                                   data_transformed_x_train_array_path=config.data_transformed_x_train_array_path,
-                                                   data_transformed_x_test_array_path=config.data_transformed_x_test_array_path,
-                                                   data_transformed_y_train_array_path=config.data_transformed_y_train_array_path,
-                                                   data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
+                data_target_column=config.data_target_column,
+                data_transformer_path=config.data_transformer_path,
+                data_transformed_x_train_array_path=config.data_transformed_x_train_array_path,
+                data_transformed_x_test_array_path=config.data_transformed_x_test_array_path,
+                data_transformed_y_train_array_path=config.data_transformed_y_train_array_path,
+                data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
             return data_config
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
