@@ -6,23 +6,19 @@ from src.utils.common import read_yaml_configbox, read_yaml_dict
 from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.entities.config_entity import (
     DataIngestionConfig, DataTransformationConfig, ModelConfig)
+from src.singleton import Singleton
 from src import logger
 
-
+@Singleton
 class ConfigurationManager:
     """Configuration manager class to read configuration files"""
 
-    def __new__(cls):
-        """ Make class singleton - so init only runs once"""
-        if not hasattr(cls, 'instance'):
-            cls.instance = super(ConfigurationManager, cls).__new__(cls)
-        return cls.instance
-
-    def __init__(self, config_file_path=CONFIG_FILE_PATH, params_file_path=PARAMS_FILE_PATH):
+    def __init__(self):
         try:
-            self.config = read_yaml_configbox(config_file_path)
-            self.params_dict = read_yaml_dict(params_file_path)
-            self.params_file_path = params_file_path
+            logger.info(
+                "Initializing configuration. This should only happen once.")
+            self.config = read_yaml_configbox(CONFIG_FILE_PATH)
+            self.params_dict = read_yaml_dict(PARAMS_FILE_PATH)
         except EnsureError as ex:
             logger.exception("Problem reading yaml file.")
             raise ex

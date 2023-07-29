@@ -15,7 +15,7 @@ class DataTransformerPipeline():
     def transform(self):
         """Method to read configuration and transform data"""
         try:
-            config = ConfigurationManager()
+            config = ConfigurationManager.instance()
             ingestion_config = config.get_data_ingestion_config()
             transformation_config = config.get_data_transformation_config()
             data_transformer = DataTransformer(

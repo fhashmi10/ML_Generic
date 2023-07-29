@@ -23,7 +23,7 @@ class ModelBuilder:
         self.data_config = data_config
         self.model_config = model_config
 
-    def train_models(self):
+    def build_models(self):
         """Method to invoke model training"""
         try:
             models = [
@@ -35,6 +35,7 @@ class ModelBuilder:
                       XGBRegressor(),
                       CatBoostRegressor(verbose=False),
                       ]
+            # todo: only define models here and separate out trainer
             model_trainer = ModelTrainer(models=models,
                                          data_config=self.data_config, model_config=self.model_config)
             model_trainer.train_models()
