@@ -9,7 +9,8 @@ from src import logger
 class ModelTrainer:
     """Class to train models"""
 
-    def __init__(self, models: list, data_config=DataTransformationConfig, model_config=ModelConfig):
+    def __init__(self,
+                 models: list, data_config=DataTransformationConfig, model_config=ModelConfig):
         self.models = models
         self.data_config = data_config
         self.model_config = model_config
@@ -26,7 +27,7 @@ class ModelTrainer:
             raise ex
         except Exception as ex:
             raise ex
-        
+
     def perform_grid_search(self, model, param, x_train, y_train) -> any:
         """Method to perform grid search cv"""
         try:
@@ -67,7 +68,7 @@ class ModelTrainer:
                 logger.info("Training completed for %s", model_name)
 
                 # Save the model
-                model_save_path=self.model_config.model_trained_path+"/"+model_name+".pkl"
+                model_save_path = self.model_config.model_trained_path+"/"+model_name+".pkl"
                 save_object(file_path=model_save_path, obj=model)
                 logger.info("%s  model saved to disk", model_name)
         except AttributeError as ex:

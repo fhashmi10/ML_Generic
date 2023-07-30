@@ -1,6 +1,7 @@
 """Module to create pipeline to train models"""
 from src import logger
-from src.components.model.model_builder import ModelBuilder
+from src.components.model.model_builder import build_models_list
+from src.components.model.model_trainer import ModelTrainer
 from src.configuration.configuration_manager import ConfigurationManager
 
 
@@ -13,12 +14,15 @@ class ModelTrainerPipeline():
     def train(self):
         """Method to invoke model training"""
         try:
+            # get list of models to train
+            models = build_models_list()
+
             config = ConfigurationManager()
-            data_config=config.get_data_transformation_config()
-            model_config=config.get_model_config()
-            model_builder_trainer = ModelBuilder(
-                data_config=data_config, model_config=model_config)
-            model_builder_trainer.build_models()
+            data_config = config.get_data_transformation_config()
+            model_config = config.get_model_config()
+            model_trainer = ModelTrainer(models=models,
+                                         data_config=data_config, model_config=model_config)
+            model_trainer.train_models()
         except Exception as ex:
             raise ex
 
