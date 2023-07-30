@@ -2,7 +2,7 @@
 import numpy as np
 from sklearn.metrics import r2_score
 from src.entities.config_entity import DataTransformationConfig, ModelConfig
-from src.utils.common import create_directories, get_file_paths_in_folder, \
+from src.utils.common import get_file_paths_in_folder, \
     save_object, load_object, save_json
 from src import logger
 
@@ -74,8 +74,6 @@ class ModelEvaluator:
         """Method to save best model and result"""
         try:
             logger.info("Saving Results to json file")
-            create_directories(
-                [self.model_config.evaluation_score_json_path], is_file_path=True)
             save_json(
                 file_path=self.model_config.evaluation_score_json_path, data=result)
             best_model_score = max(sorted(result.values()))
