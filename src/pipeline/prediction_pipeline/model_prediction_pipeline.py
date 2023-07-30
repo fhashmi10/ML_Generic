@@ -13,7 +13,7 @@ class ModelPredictionPipeline:
     def predict(self, features_dict: dict) -> int:
         """Method to predict"""
         try:
-            config = ConfigurationManager.instance()
+            config = ConfigurationManager()
             data_config = config.get_data_transformation_config()
             model_config = config.get_model_config()
             model_predictor = ModelPredictor(data_config=data_config, model_config=model_config)

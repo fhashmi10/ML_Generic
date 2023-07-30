@@ -13,7 +13,7 @@ class ModelEvaluatorPipeline():
     def evaluate(self):
         """Method to invoke model training"""
         try:
-            config = ConfigurationManager.instance()
+            config = ConfigurationManager()
             data_config = config.get_data_transformation_config()
             model_config = config.get_model_config()
             model_evaluator = ModelEvaluator(

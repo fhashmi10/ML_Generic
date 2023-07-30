@@ -15,7 +15,7 @@ class DataIngestionPipeline:
     def ingest(self):
         """Method to read configuration and ingest data"""
         try:
-            config = ConfigurationManager.instance()
+            config = ConfigurationManager()
             data_ingestion = DataIngestion(config=config.get_data_ingestion_config())
             data_ingestion.ingest_data()
         except Exception as ex:
