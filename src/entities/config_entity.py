@@ -30,5 +30,6 @@ class ModelConfig:
     model_trained_path: Path
     final_model_path: Path
     evaluation_metric: list
-    model_params: dict
     evaluation_score_json_path: Path
+    evaluation_metric_best_model: str
+    model_params: dict
