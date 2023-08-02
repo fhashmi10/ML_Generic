@@ -32,19 +32,15 @@ Modify index.html based on your project requirements.<br>
 python app.py to run flask app.
 
 ### MLflow
-
+To track experiments
 [Documentation](https://mlflow.org/docs/latest/index.html)
 
-#### cmd
+#### Visualize and compare experiments
 - mlflow ui
 
 #### dagshub
+Save experiments to remote server
 [dagshub](https://dagshub.com/)
-
-MLFLOW_TRACKING_URI=[your dagshub uri] \
-MLFLOW_TRACKING_USERNAME=[dagshubusername] \
-MLFLOW_TRACKING_PASSWORD=[dagshubpwd] \
-python script.py
 
 Run this to export as env variables:
 
@@ -58,11 +54,11 @@ export MLFLOW_TRACKING_PASSWORD=[dagshubpwd]
 
 ```
 
-# AWS-CICD-Deployment-with-Github-Actions
+### AWS CICD with Github Actions
 
-## 1. Login to AWS console.
+#### 1. Login to AWS console.
 
-## 2. Create IAM user for deployment
+#### 2. Create IAM user for deployment
 
 	#with below access
 
@@ -90,13 +86,13 @@ export MLFLOW_TRACKING_PASSWORD=[dagshubpwd]
 	2. AmazonEC2FullAccess
 
 	
-## 3. Create ECR repo to store/save docker image
+#### 3. Create ECR repo to store/save docker image
     - Save the URI: [uri]
 
 	
-## 4. Create EC2 machine (Ubuntu) 
+#### 4. Create EC2 machine (Ubuntu) 
 
-## 5. Open EC2 and Install docker in EC2 Machine:
+#### 5. Open EC2 and Install docker in EC2 Machine:
 	
 	
 	#optinal
@@ -115,11 +111,11 @@ export MLFLOW_TRACKING_PASSWORD=[dagshubpwd]
 
 	newgrp docker
 	
-# 6. Configure EC2 as self-hosted runner:
+#### 6. Configure EC2 as self-hosted runner:
     setting>actions>runner>new self hosted runner> choose os> then run command one by one
 
 
-# 7. Setup github secrets:
+#### 7. Setup github secrets:
 
     AWS_ACCESS_KEY_ID=
 
@@ -132,7 +128,7 @@ export MLFLOW_TRACKING_PASSWORD=[dagshubpwd]
     ECR_REPOSITORY_NAME = [repo-name]
 
 
-## Contributing
+### Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
