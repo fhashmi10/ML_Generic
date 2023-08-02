@@ -104,12 +104,16 @@ class ModelEvaluator:
     def log_mlflow(self, model, model_score: dict):
         """Method to log to MLflow"""
         try:
-            mlflow.set_registry_uri(self.model_config.mlflow_uri)
+            # Below URL can be used to save experiments on remote server (dagshub can be used)
+            # dagshub uri, username and password will need to be
+            # exported as env variabls using gitbash terminal
+            # commented as of now - experiments saved to local and model registry not done
+            # mlflow.set_registry_uri(self.model_config.mlflow_uri)
             tracking_url_type_store = urlparse(
                 mlflow.get_tracking_uri()).scheme
 
             with mlflow.start_run():
-                mlflow.log_params(self.config.all_params)
+                mlflow.log_params(model.get_params())
                 mlflow.log_metric("r2_score", model_score["r2_score"])
                 mlflow.log_metric("mean_squared_error",
                                   model_score["mean_squared_error"])
@@ -123,11 +127,21 @@ class ModelEvaluator:
                     # please refer to the doc for more information:
                     # https://mlflow.org/docs/latest/model-registry.html#api-workflow
                     mlflow.sklearn.log_model(
-                        model, "model", registered_model_name=type(model).__name__)
+                        model, "model", registered_model_name="abc")
                 else:
                     mlflow.sklearn.log_model(model, "model")
         except AttributeError as ex:
             raise ex
+        except Exception as ex:
+            raise ex
+
+    @staticmethod
+    def get_best_score(scores: dict, metric_name: str):
+        """Method to get the best score"""
+        try:
+            if metric_name=="r2_score":
+                return max(sorted(scores.values()))
+            return min(sorted(scores.values()))
         except Exception as ex:
             raise ex
 
@@ -141,13 +155,15 @@ class ModelEvaluator:
 
             # Build a new dictionary with only desired metric to get best model
             result_dict = {}
+            best_metric = self.model_config.evaluation_metric_best_model
             for key, value in result.items():
                 for key_2, value_2 in value.items():
-                    if key_2 == self.model_config.evaluation_metric_best_model:
+                    if key_2 == best_metric:
                         result_dict[key] = value_2
 
             # Save best model
-            best_model_score = max(sorted(result_dict.values()))
+            best_model_score = self.get_best_score(scores=result_dict,
+                                                   metric_name=best_metric)
             best_model_name = list(result_dict.keys())[list(
                 result_dict.values()).index(best_model_score)]
             best_model = trained_models[best_model_name]

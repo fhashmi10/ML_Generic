@@ -7,7 +7,7 @@ You can also choose to save the built base models and separate out training
 from catboost import CatBoostRegressor
 from sklearn.ensemble import (AdaBoostRegressor, GradientBoostingRegressor,
                               RandomForestRegressor)
-from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LinearRegression, ElasticNet
 from sklearn.tree import DecisionTreeRegressor
 from xgboost import XGBRegressor
 
@@ -18,6 +18,7 @@ def build_models_list() -> list:
     try:
         models = [
                     LinearRegression(),
+                    ElasticNet(),
                     DecisionTreeRegressor(),
                     RandomForestRegressor(),
                     AdaBoostRegressor(),

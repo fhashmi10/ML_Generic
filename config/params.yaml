@@ -1,7 +1,10 @@
 CrossValidation:
   cv: 3
 
-  
+ElasticNet:
+  alpha: [0.9, 0.8, 1.0]
+  l1_ratio: [0.3, 0.4, 0.5]
+
 DecisionTreeRegressor:
   criterion: ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
   #splitter: ['best','random']

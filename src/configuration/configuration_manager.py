@@ -67,7 +67,8 @@ class ConfigurationManager:
                 evaluation_metric=config.evaluation_metric,
                 evaluation_score_json_path=config.evaluation_score_json_path,
                 evaluation_metric_best_model=config.evaluation_metric_best_model,
-                model_params=params)
+                model_params=params,
+                mlflow_uri=config.mlflow_uri)
             return model_config
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)

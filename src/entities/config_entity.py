@@ -33,3 +33,4 @@ class ModelConfig:
     evaluation_score_json_path: Path
     evaluation_metric_best_model: str
     model_params: dict
+    mlflow_uri: str

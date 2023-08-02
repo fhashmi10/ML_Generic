@@ -17,4 +17,5 @@ model:
   final_model_path: artifacts/models/final_model/model.pkl
   evaluation_metric: r2_score, mean_squared_error, mean_absolute_error
   evaluation_score_json_path: artifacts/models/evaluation_score/scores.json
-  evaluation_metric_best_model: r2_score # Can only provide one metric here for best model selection
+  evaluation_metric_best_model: mean_squared_error # Can only provide one metric here for best model selection
+  mlflow_uri: 
