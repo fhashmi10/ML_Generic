@@ -1,4 +1,5 @@
 """App module for flask app exposing endpoints"""
+import os
 from flask import Flask, request, render_template
 from flask_cors import CORS, cross_origin
 
@@ -15,6 +16,16 @@ def index():
     """Root API endpoint"""
     return render_template('index.html')
 
+@app.route("/train", methods=['GET', 'POST'])
+@cross_origin()
+def train():
+    """Train endpoint"""
+    try:
+        os.system("python main.py")
+        return "Training done successfully!"
+    except Exception as ex:
+        logger.exception("Error in training %s", ex)
+        return "Exception occured: Check logs"
 
 @app.route('/predict', methods=['GET', 'POST'])
 @cross_origin()
