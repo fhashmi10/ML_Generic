@@ -27,7 +27,7 @@ try:
     STAGE_NAME = "Model Training stage"
     logger.info("%s started", STAGE_NAME)
     model_trainer_pipe = ModelTrainerPipeline()
-    #model_trainer_pipe.train()
+    model_trainer_pipe.train()
     logger.info("%s completed\nx==========x", STAGE_NAME)
 
     STAGE_NAME = "Model Evaluation stage"
