@@ -14,7 +14,8 @@ from src.entities.config_entity import DataIngestionConfig, DataTransformationCo
 class DataTransformer():
     """Class to transform data"""
 
-    def __init__(self, ingestion_config: DataIngestionConfig, transformation_config: DataTransformationConfig):
+    def __init__(self, ingestion_config: DataIngestionConfig,
+                 transformation_config: DataTransformationConfig):
         self.ingestion_config = ingestion_config
         self.transformation_config = transformation_config
 
@@ -33,9 +34,22 @@ class DataTransformer():
             raise ex
         except Exception as ex:
             raise ex
-        
+
     @staticmethod
-    def get_data_transformer(num_columns: list[str], cat_columns: list[str]) -> object:
+    def get_column_types(data_frame) -> dict:
+        """Method to determine the column types"""
+        try:
+            column_types = {}
+            column_types['numerical'] = data_frame.select_dtypes(
+                exclude="object").columns
+            column_types['categorical'] = data_frame.select_dtypes(
+                include="object").columns
+            return column_types
+        except Exception as ex:
+            raise ex
+
+    @staticmethod
+    def get_data_transformer(column_types: dict) -> object:
         """Method to get data transformer object holding transformation pipeline"""
         try:
             numerical_pipeline = Pipeline(
@@ -54,8 +68,10 @@ class DataTransformer():
             )
             data_transformer = ColumnTransformer(
                 [
-                    ('pipe_numerical', numerical_pipeline, num_columns),
-                    ('pipe_categorical', categorical_pipeline, cat_columns)
+                    ('pipe_numerical', numerical_pipeline,
+                     column_types['numerical']),
+                    ('pipe_categorical', categorical_pipeline,
+                     column_types['categorical'])
                 ]
             )
             return data_transformer
@@ -66,13 +82,12 @@ class DataTransformer():
         """Method to invoke data transformation"""
         try:
             x_train, y_train, x_test, y_test = self.get_input_data()
-
-            numerical_cols = x_train.select_dtypes(exclude="object").columns
-            categorical_cols = x_train.select_dtypes(include="object").columns
+            column_types = self.get_column_types(x_train)
             data_transformer = self.get_data_transformer(
-                numerical_cols, categorical_cols)
+                column_types=column_types)
             data_transformer.fit(x_train)
-            save_object(data_transformer, self.transformation_config.data_transformer_path)
+            save_object(data_transformer,
+                        self.transformation_config.data_transformer_path)
             logger.info("Saved data transformer object: %s",
                         self.transformation_config.data_transformer_path)
 

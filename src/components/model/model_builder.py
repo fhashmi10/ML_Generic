@@ -1,32 +1,24 @@
 
 """
 Module to build models
-This class can be extended to add more models or make changes to models
-You can also choose to save the built base models and separate out training
 """
-from catboost import CatBoostRegressor
-from sklearn.ensemble import (AdaBoostRegressor, GradientBoostingRegressor,
-                              RandomForestRegressor)
-from sklearn.linear_model import LinearRegression, ElasticNet
-from sklearn.tree import DecisionTreeRegressor
-from xgboost import XGBRegressor
-
+from src.components.model.model_builder_regression import build_regression_models
+from src.components.model.model_builder_classification import build_classification_models
 from src import logger
 
-def build_models_list() -> list:
+def build_models_list(model_objective: str) -> list:
     """Method to invoke model training"""
     try:
-        models = [
-                    LinearRegression(),
-                    ElasticNet(),
-                    DecisionTreeRegressor(),
-                    RandomForestRegressor(),
-                    AdaBoostRegressor(),
-                    GradientBoostingRegressor(),
-                    XGBRegressor(),
-                    CatBoostRegressor(verbose=False),
-                    ]
+        if model_objective=="classification":
+            models=build_classification_models()
+        elif model_objective=="regression":
+            models=build_regression_models()
+        else:
+            logger.exception("Model objective is not recognized.")
+            raise ValueError
         return models
+    except ValueError as ex:
+        raise ex
     except Exception as ex:
         logger.exception("Exception occured: %s", ex)
         raise ex

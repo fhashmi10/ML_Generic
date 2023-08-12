@@ -1,7 +1,6 @@
 """
 Module to read configuration from yaml files
 """
-from ensure import EnsureError
 from src.utils.common import read_yaml_configbox, read_yaml_dict
 from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.entities.config_entity import (
@@ -15,9 +14,6 @@ class ConfigurationManager:
         try:
             self.config = read_yaml_configbox(CONFIG_FILE_PATH)
             self.params_dict = read_yaml_dict(PARAMS_FILE_PATH)
-        except EnsureError as ex:
-            logger.exception("Problem reading yaml file.")
-            raise ex
         except Exception as ex:
             logger.exception("Exception occured: %s", ex)
             raise ex
@@ -62,6 +58,7 @@ class ConfigurationManager:
             config = self.config.model
             params = self.params_dict
             model_config = ModelConfig(
+                model_objective=config.model_objective,
                 model_trained_path=config.model_trained_path,
                 final_model_path=config.final_model_path,
                 evaluation_metric=config.evaluation_metric,

@@ -3,6 +3,15 @@ data_ingestion:
   data_train_path: artifacts/data/split_data/train_data.csv
   data_test_path: artifacts/data/split_data/test_data.csv
 
+
+data_description:
+  data_numerical_columns:
+  data_binary_categorical_columns:
+  data_nominal_categorical_columns:
+  data_ordinal_categorical_columns:
+  data_date_columns:
+
+  
 data_transformation:
   data_target_column: math_score
   data_transformer_path: artifacts/data/transformed_data/data_transformer.pkl
@@ -13,6 +22,7 @@ data_transformation:
   
 
 model:
+  model_objective: regression
   model_trained_path: artifacts/models/trained_model/
   final_model_path: artifacts/models/final_model/model.pkl
   evaluation_metric: r2_score, mean_squared_error, mean_absolute_error

@@ -27,6 +27,7 @@ class DataTransformationConfig:
 @dataclass(frozen=True)
 class ModelConfig:
     """Data class for Model configuration"""
+    model_objective: str
     model_trained_path: Path
     final_model_path: Path
     evaluation_metric: list
