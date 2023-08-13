@@ -1,28 +1,49 @@
 """Module to train models"""
-import numpy as np
+import pandas as pd
 from sklearn.model_selection import GridSearchCV
-from src.utils.common import save_object
-from src.entities.config_entity import DataTransformationConfig, ModelConfig
+from src.utils.common import save_object, load_object
+from src.entities.config_entity import DataIngestionConfig, DataTransformationConfig, ModelConfig
 from src import logger
 
 
 class ModelTrainer:
     """Class to train models"""
 
-    def __init__(self,
-                 models: list, data_config=DataTransformationConfig, model_config=ModelConfig):
+    def __init__(self, models: list,
+                 ingestion_config=DataIngestionConfig,
+                 data_config=DataTransformationConfig,
+                 model_config=ModelConfig):
         self.models = models
+        self.ingestion_config = ingestion_config
         self.data_config = data_config
         self.model_config = model_config
+
+    def transform_data(self, data: pd.DataFrame):
+        """Method to transform data"""
+        try:
+            preprocessor = load_object(
+                file_path=self.data_config.data_transformer_path)
+            logger.info("loaded data transformer successfully.")
+            transformed_data = preprocessor.transform(data)
+            return transformed_data
+        except OSError as ex:
+            raise ex
+        except AttributeError as ex:
+            raise ex
+        except Exception as ex:
+            raise ex
 
     def load_train_data(self):
         """Method to load test data"""
         try:
-            x_train = np.load(
-                self.data_config.data_transformed_x_train_array_path)
-            y_train = np.load(
-                self.data_config.data_transformed_y_train_array_path)
-            return x_train, y_train
+            df_train = pd.read_csv(self.ingestion_config.data_train_path)
+            target_column = self.data_config.data_target_column
+            x_train = df_train.drop(columns=[target_column], axis=1)
+            x_train_transformed = self.transform_data(data=x_train)
+            y_train = df_train[target_column]
+            return x_train_transformed, y_train
+        except OSError as ex:
+            raise ex
         except AttributeError as ex:
             raise ex
         except Exception as ex:

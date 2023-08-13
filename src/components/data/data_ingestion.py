@@ -33,7 +33,7 @@ class DataIngestion():
                 remove_directories(
                     [train_path, test_path])
             return skip_process
-        except IOError as ex:
+        except OSError as ex:
             logger.exception("Error in checking data file on disk.")
             raise ex
         except Exception as ex:
@@ -65,7 +65,7 @@ class DataIngestion():
             test_set.to_csv(self.config.data_test_path,
                             index=False, header=True)
             logger.info("Train and test data saved to csv files on disk.")
-        except IOError as ex:
+        except OSError as ex:
             logger.exception("Error saving train test data files.")
             raise ex
         except AttributeError as ex:

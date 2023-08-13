@@ -1,9 +1,10 @@
 """Module to evaluate models"""
 from urllib.parse import urlparse
+import pandas as pd
 import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import mlflow
-from src.entities.config_entity import DataTransformationConfig, ModelConfig
+from src.entities.config_entity import DataIngestionConfig, DataTransformationConfig, ModelConfig
 from src.utils.common import get_file_paths_in_folder, \
     save_object, load_object, save_json
 from src import logger
@@ -12,7 +13,11 @@ from src import logger
 class ModelEvaluator:
     """Class to evaluate models"""
 
-    def __init__(self, data_config=DataTransformationConfig, model_config=ModelConfig):
+    def __init__(self,
+                 ingestion_config=DataIngestionConfig,
+                 data_config=DataTransformationConfig,
+                 model_config=ModelConfig):
+        self.ingestion_config = ingestion_config
         self.data_config = data_config
         self.model_config = model_config
 
@@ -53,14 +58,32 @@ class ModelEvaluator:
         except Exception as ex:
             raise ex
 
+    def transform_data(self, data: pd.DataFrame):
+        """Method to transform data"""
+        try:
+            preprocessor = load_object(
+                file_path=self.data_config.data_transformer_path)
+            logger.info("loaded data transformer successfully.")
+            transformed_data = preprocessor.transform(data)
+            return transformed_data
+        except OSError as ex:
+            raise ex
+        except AttributeError as ex:
+            raise ex
+        except Exception as ex:
+            raise ex
+
     def load_test_data(self):
         """Method to load test data"""
         try:
-            x_test = np.load(
-                self.data_config.data_transformed_x_test_array_path)
-            y_test = np.load(
-                self.data_config.data_transformed_y_test_array_path)
-            return x_test, y_test
+            df_test = pd.read_csv(self.ingestion_config.data_test_path)
+            target_column = self.data_config.data_target_column
+            x_test = df_test.drop(columns=[target_column], axis=1)
+            x_test_transformed = self.transform_data(data=x_test)
+            y_test = df_test[target_column]
+            return x_test_transformed, y_test
+        except OSError as ex:
+            raise ex
         except AttributeError as ex:
             raise ex
         except Exception as ex:
@@ -139,7 +162,7 @@ class ModelEvaluator:
     def get_best_score(scores: dict, metric_name: str):
         """Method to get the best score"""
         try:
-            if metric_name=="r2_score":
+            if metric_name == "r2_score":
                 return max(sorted(scores.values()))
             return min(sorted(scores.values()))
         except Exception as ex:

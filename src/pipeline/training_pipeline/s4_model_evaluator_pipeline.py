@@ -14,10 +14,13 @@ class ModelEvaluatorPipeline():
         """Method to invoke model training"""
         try:
             config = ConfigurationManager()
+            ingestion_config = config.get_data_ingestion_config()
             data_config = config.get_data_transformation_config()
             model_config = config.get_model_config()
             model_evaluator = ModelEvaluator(
-                data_config=data_config, model_config=model_config)
+                ingestion_config=ingestion_config,
+                data_config=data_config,
+                model_config=model_config)
             model_evaluator.evaluate()
         except Exception as ex:
             raise ex

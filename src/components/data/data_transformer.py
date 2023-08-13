@@ -23,13 +23,10 @@ class DataTransformer():
         """Method to get input data"""
         try:
             df_train = pd.read_csv(self.ingestion_config.data_train_path)
-            df_test = pd.read_csv(self.ingestion_config.data_test_path)
             target_column = self.transformation_config.data_target_column
             x_train = df_train.drop(columns=[target_column], axis=1)
             y_train = df_train[target_column]
-            x_test = df_test.drop(columns=[target_column], axis=1)
-            y_test = df_test[target_column]
-            return x_train, y_train, x_test, y_test
+            return x_train, y_train
         except AttributeError as ex:
             raise ex
         except Exception as ex:
@@ -81,7 +78,7 @@ class DataTransformer():
     def transform_data(self):
         """Method to invoke data transformation"""
         try:
-            x_train, y_train, x_test, y_test = self.get_input_data()
+            x_train,_ = self.get_input_data()
             column_types = self.get_column_types(x_train)
             data_transformer = self.get_data_transformer(
                 column_types=column_types)
@@ -90,16 +87,6 @@ class DataTransformer():
                         self.transformation_config.data_transformer_path)
             logger.info("Saved data transformer object: %s",
                         self.transformation_config.data_transformer_path)
-
-            np.save(self.transformation_config.data_transformed_x_train_array_path,
-                    data_transformer.transform(x_train))
-            np.save(self.transformation_config.data_transformed_x_test_array_path,
-                    data_transformer.transform(x_test))
-            np.save(self.transformation_config.data_transformed_y_train_array_path,
-                    np.array(y_train))
-            np.save(self.transformation_config.data_transformed_y_test_array_path,
-                    np.array(y_test))
-            logger.info("Transformed data arrays are saved to disk")
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
             raise ex

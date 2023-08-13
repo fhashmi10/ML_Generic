@@ -17,13 +17,13 @@ def read_yaml_dict(path_to_yaml: Path) -> dict:
         with open(path_to_yaml, encoding='utf8') as yaml_file:
             yaml_content = yaml.safe_load(yaml_file)
             if yaml_content is None:
-                raise IOError
+                raise OSError
             logger.info("yaml file loaded successfully: %s", path_to_yaml)
             return yaml_content
     except FileNotFoundError as ex:
         logger.exception("yaml file not found: %s", path_to_yaml)
         raise ex
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("yaml file is empty: %s", path_to_yaml)
         raise ex
     except Exception as ex:
@@ -56,7 +56,7 @@ def create_directories(path_to_directories: list, is_file_path=False):
                     dir_path = os.path.dirname(os.path.abspath(dir_path))
                 os.makedirs(dir_path, exist_ok=True)
                 logger.info("created directory at %s:", dir_path)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error creating directories: %s", path_to_directories)
         raise ex
     except Exception as ex:
@@ -75,7 +75,7 @@ def remove_directories(path_to_directories: list):
                 elif os.path.isfile(path):
                     os.remove(path)
                     logger.info("removed file at %s:", path)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error removing directories: %s", path_to_directories)
         raise ex
     except Exception as ex:
@@ -89,7 +89,7 @@ def save_object(obj, file_path: Path):
         os.makedirs(os.path.dirname(file_path), exist_ok=True)
         with open(file_path, "wb") as file_obj:
             pickle.dump(obj, file_obj)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error saving object at: %s", file_path)
         raise ex
     except Exception as ex:
@@ -102,7 +102,7 @@ def load_object(file_path: Path):
     try:
         with open(file_path, "rb") as file_obj:
             return pickle.load(file_obj)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error loading object from: %s", file_path)
         raise ex
     except Exception as ex:
@@ -117,7 +117,7 @@ def save_json(file_path: Path, data: dict):
         with open(file_path, "w", encoding="utf8") as file:
             json.dump(data, file, indent=4)
         logger.info("json file saved at: %s", file_path)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error loading object from: %s", file_path)
         raise ex
     except Exception as ex:
@@ -132,7 +132,7 @@ def load_json(file_path: Path) -> ConfigBox:
             content = json.load(file)
         logger.info("json file loaded succesfully from: %s", file_path)
         return ConfigBox(content)
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error loading json from: %s", file_path)
         raise ex
     except Exception as ex:
@@ -145,7 +145,7 @@ def get_file_paths_in_folder(folder_path: Path) -> list:
     try:
         file_paths = [os.path.join(folder_path,f) for f in os.listdir(folder_path)]
         return file_paths
-    except IOError as ex:
+    except OSError as ex:
         logger.exception("Error getting file names from: %s", folder_path)
         raise ex
     except Exception as ex:
