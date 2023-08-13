@@ -4,6 +4,7 @@ import pandas as pd
 
 from src.entities.config_entity import DataConfig, ModelConfig
 from src.utils.common import load_object
+from src.utils.helper import perform_data_transformation
 from src import logger
 
 
@@ -14,27 +15,19 @@ class ModelPredictor:
         self.data_config = data_config
         self.model_config = model_config
 
-    def transform_input_data(self, features_dict: dict):
-        """Method to transform input data"""
-        try:
-            preprocessor = load_object(
-                file_path=self.data_config.transformer_path)
-            logger.info("loaded data transformer successfully.")
-            features_df = pd.DataFrame(features_dict, index=[0])
-            transformed_data = preprocessor.transform(features_df)
-            return transformed_data
-        except Exception as ex:
-            raise ex
-
     def predict(self, features_dict: dict) -> int:
         """Method to invoke prediction"""
         try:
             # Transform input data
-            transformed_data = self.transform_input_data(
-                features_dict=features_dict)
+            features_df = pd.DataFrame(features_dict, index=[0])
+            transformed_data = perform_data_transformation(
+                transformer_path=self.data_config.transformer_path,
+                input_data=features_df)
+
             # Load the model
             model = load_object(file_path=self.model_config.final_model_path)
             logger.info("loaded model successfully.")
+
             # Predict
             prediction = int(round(model.predict(transformed_data)[0], 0))
             logger.info("Predicted %s", prediction)

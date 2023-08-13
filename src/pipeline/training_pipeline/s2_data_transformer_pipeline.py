@@ -18,7 +18,7 @@ class DataTransformerPipeline():
             config = ConfigurationManager()
             data_config = config.get_data_config()
             data_transformer = DataTransformer(data_config=data_config)
-            data_transformer.transform_data()
+            data_transformer.build_data_transformer()
         except Exception as ex:
             raise ex
 

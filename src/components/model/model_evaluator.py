@@ -1,12 +1,12 @@
 """Module to evaluate models"""
 from urllib.parse import urlparse
-import pandas as pd
 import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import mlflow
 from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
 from src.utils.common import get_file_paths_in_folder, \
     save_object, load_object, save_json
+from src.utils.helper import load_split_data, perform_data_transformation
 from src import logger
 
 
@@ -54,37 +54,6 @@ class ModelEvaluator:
             return getattr(self, eval_metric)(actual, predicted)
         except AttributeError as ex:
             logger.exception("Error getting metric function: %s", ex)
-            raise ex
-        except Exception as ex:
-            raise ex
-
-    def transform_data(self, data: pd.DataFrame):
-        """Method to transform data"""
-        try:
-            preprocessor = load_object(
-                file_path=self.data_config.transformer_path)
-            logger.info("loaded data transformer successfully.")
-            transformed_data = preprocessor.transform(data)
-            return transformed_data
-        except OSError as ex:
-            raise ex
-        except AttributeError as ex:
-            raise ex
-        except Exception as ex:
-            raise ex
-
-    def load_test_data(self):
-        """Method to load test data"""
-        try:
-            df_test = pd.read_csv(self.data_config.test_split_path)
-            target_column = self.data_config.target_column
-            x_test = df_test.drop(columns=[target_column], axis=1)
-            x_test_transformed = self.transform_data(data=x_test)
-            y_test = df_test[target_column]
-            return x_test_transformed, y_test
-        except OSError as ex:
-            raise ex
-        except AttributeError as ex:
             raise ex
         except Exception as ex:
             raise ex
@@ -208,12 +177,19 @@ class ModelEvaluator:
         """Method to evaluate models"""
         try:
             # Load test data
-            x_test, y_test = self.load_test_data()
+            x_test, y_test = load_split_data(data_path=self.data_config.test_split_path,
+                                             target_column=self.data_config.target_column)
+
+            # Transform test data
+            x_test_transformed = perform_data_transformation(
+                transformer_path=self.data_config.transformer_path,
+                input_data=x_test)
+
             # Evaluate models
             file_paths = get_file_paths_in_folder(
                 self.model_config.trained_models_path)
             trained_models, result = self.evaluate_models(file_paths=file_paths,
-                                                          x_test=x_test, y_test=y_test)
+                                                          x_test=x_test_transformed, y_test=y_test)
             # Save the best model
             self.save_best_model(trained_models=trained_models, result=result)
         except AttributeError as ex:

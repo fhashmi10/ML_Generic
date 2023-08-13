@@ -14,7 +14,7 @@ class ModelPredictionPipeline:
         """Method to predict"""
         try:
             config = ConfigurationManager()
-            data_config = config.get_data_transformation_config()
+            data_config = config.get_data_config()
             model_config = config.get_model_config()
             model_predictor = ModelPredictor(data_config=data_config, model_config=model_config)
             prediction = model_predictor.predict(features_dict=features_dict)

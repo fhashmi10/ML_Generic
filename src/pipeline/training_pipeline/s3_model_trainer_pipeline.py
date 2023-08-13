@@ -26,7 +26,7 @@ class ModelTrainerPipeline():
             model_trainer = ModelTrainer(models=models,
                                          data_config=data_config,
                                          model_config=model_config)
-            model_trainer.train_models()
+            model_trainer.train()
         except Exception as ex:
             raise ex
 
