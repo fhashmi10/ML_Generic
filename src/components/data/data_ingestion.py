@@ -74,8 +74,9 @@ class DataIngestion():
         try:
             train_path = self.data_config.train_split_path
             test_path = self.data_config.test_split_path
-            skip_processing = self.skip_processing(
-                train_path=train_path, test_path=test_path, skip_existing=skip_existing)
+            skip_processing = self.skip_processing(train_path=train_path,
+                                                   test_path=test_path,
+                                                   skip_existing=skip_existing)
             if not skip_processing:
                 # Load data
                 self.load_input_data()
