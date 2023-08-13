@@ -1,5 +1,4 @@
 """Module to transform data"""
-import numpy as np
 import pandas as pd
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
@@ -7,23 +6,21 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
 from src import logger
-from src.utils.common import (save_object)
-from src.entities.config_entity import DataIngestionConfig, DataTransformationConfig
+from src.utils.common import save_object
+from src.entities.config_entity import DataConfig
 
 
 class DataTransformer():
     """Class to transform data"""
 
-    def __init__(self, ingestion_config: DataIngestionConfig,
-                 transformation_config: DataTransformationConfig):
-        self.ingestion_config = ingestion_config
-        self.transformation_config = transformation_config
+    def __init__(self, data_config: DataConfig):
+        self.data_config = data_config
 
     def get_input_data(self):
         """Method to get input data"""
         try:
-            df_train = pd.read_csv(self.ingestion_config.data_train_path)
-            target_column = self.transformation_config.data_target_column
+            df_train = pd.read_csv(self.data_config.train_split_path)
+            target_column = self.data_config.target_column
             x_train = df_train.drop(columns=[target_column], axis=1)
             y_train = df_train[target_column]
             return x_train, y_train
@@ -84,9 +81,9 @@ class DataTransformer():
                 column_types=column_types)
             data_transformer.fit(x_train)
             save_object(data_transformer,
-                        self.transformation_config.data_transformer_path)
+                        self.data_config.transformer_path)
             logger.info("Saved data transformer object: %s",
-                        self.transformation_config.data_transformer_path)
+                        self.data_config.transformer_path)
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
             raise ex

@@ -4,16 +4,17 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from src import logger
+from src.entities.config_entity import DataConfig
 from src.components.data.data_preprocessor import preprocess_data
 from src.utils.common import create_directories, remove_directories
-from src.entities.config_entity import DataIngestionConfig
 
 
 class DataIngestion():
     """Class to ingest data"""
 
-    def __init__(self, config: DataIngestionConfig):
-        self.config = config
+    def __init__(self, data_config: DataConfig):
+        self.data_config = data_config
+        self.data_frame = pd.DataFrame()
 
     @staticmethod
     def skip_processing(train_path: str, test_path: str, skip_existing: bool) -> bool:
@@ -39,31 +40,26 @@ class DataIngestion():
         except Exception as ex:
             raise ex
 
-    def fetch_processed_data(self) -> pd.DataFrame:
-        """Method to get data from csv and perform preprocessing on it"""
+    def load_input_data(self):
+        """Method to load the input data"""
         try:
             # Read data from csv
-            data_frame = pd.read_csv(self.config.data_original_path)
+            self.data_frame = pd.read_csv(self.data_config.input_path)
             logger.info("Input data file loaded.")
-            # Preprocess data
-            data_frame = preprocess_data(data_frame)
-            return data_frame
-        except AttributeError as ex:
+        except OSError as ex:
+            logger.exception("Error reading data file.")
             raise ex
         except Exception as ex:
             raise ex
 
-    def train_test_split(self, data_frame):
+    def train_test_split(self, train_path, test_path):
         """Method to split data into train and test"""
         try:
+            create_directories([train_path, test_path], is_file_path=True)
             train_set, test_set = train_test_split(
-                data_frame, test_size=0.2, random_state=42)
-            create_directories([self.config.data_train_path,
-                                self.config.data_test_path], is_file_path=True)
-            train_set.to_csv(self.config.data_train_path,
-                             index=False, header=True)
-            test_set.to_csv(self.config.data_test_path,
-                            index=False, header=True)
+                self.data_frame, test_size=0.2, random_state=42)
+            train_set.to_csv(train_path, index=False, header=True)
+            test_set.to_csv(test_path, index=False, header=True)
             logger.info("Train and test data saved to csv files on disk.")
         except OSError as ex:
             logger.exception("Error saving train test data files.")
@@ -74,15 +70,20 @@ class DataIngestion():
             raise ex
 
     def ingest_data(self, skip_existing=False):
-        """Method to be invoked to ingest data"""
+        """Method to invoke data ingestion"""
         try:
+            train_path = self.data_config.train_split_path
+            test_path = self.data_config.test_split_path
             skip_processing = self.skip_processing(
-                train_path=self.config.data_train_path,
-                test_path=self.config.data_test_path,
-                skip_existing=skip_existing)
+                train_path=train_path, test_path=test_path, skip_existing=skip_existing)
             if not skip_processing:
-                df_preprocessed = self.fetch_processed_data()
-                self.train_test_split(data_frame=df_preprocessed)
+                # Load data
+                self.load_input_data()
+                # Preprocess data
+                self.data_frame = preprocess_data(self.data_frame)
+                # Train test split
+                self.train_test_split(
+                    train_path=train_path, test_path=test_path)
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
             raise ex

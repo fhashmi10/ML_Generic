@@ -1,31 +1,27 @@
-data_ingestion:
-  data_original_path: data/stud.csv
-  data_train_path: artifacts/data/split_data/train_data.csv
-  data_test_path: artifacts/data/split_data/test_data.csv
+schema:
+  one_hot_cols:
+  binary_map_cols:
+  ordinal_cols:
+  numerical_cols:
+  date_columns:
 
 
-data_description:
-  data_numerical_columns:
-  data_binary_categorical_columns:
-  data_nominal_categorical_columns:
-  data_ordinal_categorical_columns:
-  data_date_columns:
-
-  
-data_transformation:
-  data_target_column: math_score
-  data_transformer_path: artifacts/data/transformed_data/data_transformer.pkl
-  data_transformed_x_train_array_path: artifacts/data/transformed_data/transformed_x_train_arr.npy
-  data_transformed_x_test_array_path: artifacts/data/transformed_data/transformed_x_test_arr.npy
-  data_transformed_y_train_array_path: artifacts/data/transformed_data/transformed_y_train_arr.npy
-  data_transformed_y_test_array_path: artifacts/data/transformed_data/transformed_y_test_arr.npy
+data:
+  input_path: data/stud.csv
+  train_split_path: artifacts/data/train_data.csv
+  test_split_path: artifacts/data/test_data.csv
+  target_column: math_score
+  transformer_path: artifacts/data/data_transformer.pkl
   
 
 model:
-  model_objective: regression
-  model_trained_path: artifacts/models/trained_model/
-  final_model_path: artifacts/models/final_model/model.pkl
-  evaluation_metric: r2_score, mean_squared_error, mean_absolute_error
-  evaluation_score_json_path: artifacts/models/evaluation_score/scores.json
-  evaluation_metric_best_model: mean_squared_error # Can only provide one metric here for best model selection
+  model_task: regression
+  trained_models_path: artifacts/models/a.trained_models/
+  final_model_path: artifacts/models/b.final_model/model.pkl
+
+
+evaluation:
+  eval_metrics: r2_score, mean_squared_error, mean_absolute_error
+  eval_metric_selection: r2_score # Can only provide one metric here as best model selection criteria
+  eval_scores_path: artifacts/models/c.evaluation_score/scores.json
   mlflow_uri: 

@@ -4,7 +4,7 @@ import pandas as pd
 import numpy as np
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 import mlflow
-from src.entities.config_entity import DataIngestionConfig, DataTransformationConfig, ModelConfig
+from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
 from src.utils.common import get_file_paths_in_folder, \
     save_object, load_object, save_json
 from src import logger
@@ -14,12 +14,12 @@ class ModelEvaluator:
     """Class to evaluate models"""
 
     def __init__(self,
-                 ingestion_config=DataIngestionConfig,
-                 data_config=DataTransformationConfig,
-                 model_config=ModelConfig):
-        self.ingestion_config = ingestion_config
+                 data_config=DataConfig,
+                 model_config=ModelConfig,
+                 eval_config=EvalConfig):
         self.data_config = data_config
         self.model_config = model_config
+        self.eval_config = eval_config
 
     @staticmethod
     def r2_score(actual, predicted):
@@ -62,7 +62,7 @@ class ModelEvaluator:
         """Method to transform data"""
         try:
             preprocessor = load_object(
-                file_path=self.data_config.data_transformer_path)
+                file_path=self.data_config.transformer_path)
             logger.info("loaded data transformer successfully.")
             transformed_data = preprocessor.transform(data)
             return transformed_data
@@ -76,8 +76,8 @@ class ModelEvaluator:
     def load_test_data(self):
         """Method to load test data"""
         try:
-            df_test = pd.read_csv(self.ingestion_config.data_test_path)
-            target_column = self.data_config.data_target_column
+            df_test = pd.read_csv(self.data_config.test_split_path)
+            target_column = self.data_config.target_column
             x_test = df_test.drop(columns=[target_column], axis=1)
             x_test_transformed = self.transform_data(data=x_test)
             y_test = df_test[target_column]
@@ -103,7 +103,7 @@ class ModelEvaluator:
                 y_test_pred = model.predict(x_test)
 
                 # Evaluate
-                eval_metrics: list = self.model_config.evaluation_metric.split(
+                eval_metrics: list = self.eval_config.eval_metrics.split(
                     ',')
                 test_model_scores = {}
                 for metric in eval_metrics:
@@ -131,7 +131,7 @@ class ModelEvaluator:
             # dagshub uri, username and password will need to be
             # exported as env variabls using gitbash terminal
             # commented as of now - experiments saved to local and model registry not done
-            # mlflow.set_registry_uri(self.model_config.mlflow_uri)
+            # mlflow.set_registry_uri(self.eval_config.mlflow_uri)
             tracking_url_type_store = urlparse(
                 mlflow.get_tracking_uri()).scheme
 
@@ -174,11 +174,11 @@ class ModelEvaluator:
             # Save all results to json
             logger.info("Saving Results to json file")
             save_json(
-                file_path=self.model_config.evaluation_score_json_path, data=result)
+                file_path=self.eval_config.eval_scores_path, data=result)
 
             # Build a new dictionary with only desired metric to get best model
             result_dict = {}
-            best_metric = self.model_config.evaluation_metric_best_model
+            best_metric = self.eval_config.eval_metric_selection
             for key, value in result.items():
                 for key_2, value_2 in value.items():
                     if key_2 == best_metric:
@@ -194,7 +194,7 @@ class ModelEvaluator:
                 file_path=self.model_config.final_model_path, obj=best_model)
             logger.info("%s is the best model with %s as %s",
                         best_model_name,
-                        self.model_config.evaluation_metric_best_model,
+                        best_metric,
                         best_model_score)
 
             # Log ml flow
@@ -211,7 +211,7 @@ class ModelEvaluator:
             x_test, y_test = self.load_test_data()
             # Evaluate models
             file_paths = get_file_paths_in_folder(
-                self.model_config.model_trained_path)
+                self.model_config.trained_models_path)
             trained_models, result = self.evaluate_models(file_paths=file_paths,
                                                           x_test=x_test, y_test=y_test)
             # Save the best model

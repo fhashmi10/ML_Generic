@@ -6,32 +6,28 @@ from pathlib import Path
 
 
 @dataclass(frozen=True)
-class DataIngestionConfig:
+class DataConfig:
     """Data class for data configurations"""
-    data_original_path: Path
-    data_train_path: Path
-    data_test_path: Path
-
-
-@dataclass(frozen=True)
-class DataTransformationConfig:
-    """Data class for data transform configurations"""
-    data_target_column: str
-    data_transformer_path: Path
-    data_transformed_x_train_array_path: Path
-    data_transformed_x_test_array_path: Path
-    data_transformed_y_train_array_path: Path
-    data_transformed_y_test_array_path: Path
+    input_path: Path
+    train_split_path: Path
+    test_split_path: Path
+    target_column: str
+    transformer_path: Path
 
 
 @dataclass(frozen=True)
 class ModelConfig:
     """Data class for Model configuration"""
-    model_objective: str
-    model_trained_path: Path
+    model_task: str
+    trained_models_path: Path
     final_model_path: Path
-    evaluation_metric: list
-    evaluation_score_json_path: Path
-    evaluation_metric_best_model: str
     model_params: dict
+
+
+@dataclass(frozen=True)
+class EvalConfig:
+    """Data class for Evaluation configuration"""   
+    eval_metrics: list
+    eval_metric_selection: str
+    eval_scores_path: Path
     mlflow_uri: str

@@ -16,10 +16,8 @@ class DataTransformerPipeline():
         """Method to read configuration and transform data"""
         try:
             config = ConfigurationManager()
-            ingestion_config = config.get_data_ingestion_config()
-            transformation_config = config.get_data_transformation_config()
-            data_transformer = DataTransformer(
-                ingestion_config=ingestion_config, transformation_config=transformation_config)
+            data_config = config.get_data_config()
+            data_transformer = DataTransformer(data_config=data_config)
             data_transformer.transform_data()
         except Exception as ex:
             raise ex

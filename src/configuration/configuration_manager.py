@@ -1,11 +1,10 @@
 """
 Module to read configuration from yaml files
 """
-from src.utils.common import read_yaml_configbox, read_yaml_dict
-from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
-from src.entities.config_entity import (
-    DataIngestionConfig, DataTransformationConfig, ModelConfig)
 from src import logger
+from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
+from src.utils.common import read_yaml_configbox, read_yaml_dict
+from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
 
 class ConfigurationManager:
     """Configuration manager class to read configuration files"""
@@ -18,32 +17,15 @@ class ConfigurationManager:
             logger.exception("Exception occured: %s", ex)
             raise ex
 
-    def get_data_ingestion_config(self) -> DataIngestionConfig:
+    def get_data_config(self) -> DataConfig:
         """Method to map data configurations"""
         try:
-            config = self.config.data_ingestion
-            data_config = DataIngestionConfig(data_original_path=config.data_original_path,
-                                              data_train_path=config.data_train_path,
-                                              data_test_path=config.data_test_path)
-            return data_config
-        except AttributeError as ex:
-            logger.exception("Error finding attribute: %s", ex)
-            raise ex
-        except Exception as ex:
-            logger.exception("Exception occured: %s", ex)
-            raise ex
-
-    def get_data_transformation_config(self) -> DataTransformationConfig:
-        """Method to map data configurations"""
-        try:
-            config = self.config.data_transformation
-            data_config = DataTransformationConfig(
-                data_target_column=config.data_target_column,
-                data_transformer_path=config.data_transformer_path,
-                data_transformed_x_train_array_path=config.data_transformed_x_train_array_path,
-                data_transformed_x_test_array_path=config.data_transformed_x_test_array_path,
-                data_transformed_y_train_array_path=config.data_transformed_y_train_array_path,
-                data_transformed_y_test_array_path=config.data_transformed_y_test_array_path)
+            config = self.config.data
+            data_config = DataConfig(input_path=config.input_path,
+                                     train_split_path=config.train_split_path,
+                                     test_split_path=config.test_split_path,
+                                     target_column=config.target_column,
+                                     transformer_path=config.transformer_path)
             return data_config
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
@@ -57,16 +39,27 @@ class ConfigurationManager:
         try:
             config = self.config.model
             params = self.params_dict
-            model_config = ModelConfig(
-                model_objective=config.model_objective,
-                model_trained_path=config.model_trained_path,
-                final_model_path=config.final_model_path,
-                evaluation_metric=config.evaluation_metric,
-                evaluation_score_json_path=config.evaluation_score_json_path,
-                evaluation_metric_best_model=config.evaluation_metric_best_model,
-                model_params=params,
-                mlflow_uri=config.mlflow_uri)
+            model_config = ModelConfig(model_task=config.model_task,
+                                       trained_models_path=config.trained_models_path,
+                                       final_model_path=config.final_model_path,
+                                       model_params=params)
             return model_config
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
+        except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
+            raise ex
+
+    def get_evaluation_config(self) -> EvalConfig:
+        """Method to map evaluation configurations"""
+        try:
+            config = self.config.evaluation
+            eval_config = EvalConfig(eval_metrics=config.eval_metrics,
+                                     eval_metric_selection=config.eval_metric_selection,
+                                     eval_scores_path=config.eval_scores_path,
+                                     mlflow_uri=config.mlflow_uri)
+            return eval_config
         except AttributeError as ex:
             logger.exception("Error finding attribute: %s", ex)
             raise ex

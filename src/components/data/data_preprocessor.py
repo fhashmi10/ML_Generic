@@ -1,6 +1,5 @@
 """Module to define data preprocessing steps"""
 import pandas as pd
-import numpy as np
 from src import logger
 
 @staticmethod
