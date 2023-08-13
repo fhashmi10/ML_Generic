@@ -18,7 +18,7 @@ New data file path needs to be configured in config.yaml<br>
 New target column needs to be configured in config.yaml
 
 ### Model Training
-A model that you desire to train can be added to the list of models in module - model_builder.py <br>
+A model that you desire to train can be added to the list of models in module - model_builder_[model_task].py <br>
 Model parameters can be configured in params.yaml<br>
 Evaluation metric can be configured in params.yaml<br>
 python main.py to run all pipelines (except prediction).
