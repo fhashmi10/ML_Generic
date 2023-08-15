@@ -15,7 +15,7 @@ data:
   
 
 model:
-  model_task: regression
+  model_task: regression # regression/classification
   trained_models_path: artifacts/models/a.trained_models/
   final_model_path: artifacts/models/b.final_model/model.pkl
 
@@ -24,4 +24,4 @@ evaluation:
   eval_metrics: r2_score, mean_squared_error, mean_absolute_error
   eval_metric_selection: r2_score # Can only provide one metric here as best model selection criteria
   eval_scores_path: artifacts/models/c.evaluation_score/scores.json
-  mlflow_uri: 
+  mlflow_uri:
