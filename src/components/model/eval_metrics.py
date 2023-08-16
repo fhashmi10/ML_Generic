@@ -12,6 +12,16 @@ class EvalMetrics():
         pass
 
     @staticmethod
+    def get_best_score(scores: dict, metric_name: str):
+        """Method to get the best score"""
+        try:
+            if metric_name == "r2_score":
+                return max(sorted(scores.values()))
+            return min(sorted(scores.values()))
+        except Exception as ex:
+            raise ex
+
+    @staticmethod
     def r2_score(actual, predicted):
         """Method to calculate r2_score"""
         try:

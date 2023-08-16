@@ -19,13 +19,13 @@ class ModelEvaluator:
         self.data_config = data_config
         self.model_config = model_config
         self.eval_config = eval_config
+        self.eval_metric = EvalMetrics()
 
     def evaluate_models(self, file_paths: list, x_test, y_test):
         """Method to evaluate models"""
         try:
             trained_models = {}
             result = {}
-            eval_metrics = EvalMetrics()
 
             for file_path in file_paths:
                 # Predict
@@ -35,11 +35,10 @@ class ModelEvaluator:
                 y_test_pred = model.predict(x_test)
 
                 # Evaluate
-                metrics: list = self.eval_config.eval_metrics.split(',')
+                metrics = [met.strip() for met in self.eval_config.eval_metrics.split(',')]
                 test_model_scores = {}
                 for metric in metrics:
-                    metric = metric.strip()
-                    test_model_score = eval_metrics.evaluate_metric(eval_metric=metric,
+                    test_model_score = self.eval_metric.evaluate_metric(eval_metric=metric,
                                                                     actual=y_test,
                                                                     predicted=y_test_pred)
                     test_model_scores[metric] = test_model_score
@@ -69,9 +68,8 @@ class ModelEvaluator:
             with mlflow.start_run():
                 mlflow.log_params(model.get_params())
 
-                metrics: list = self.eval_config.eval_metrics.split(',')
+                metrics = [met.strip() for met in self.eval_config.eval_metrics.split(',')]
                 for metric in metrics:
-                    metric = metric.strip()
                     mlflow.log_metric(metric, model_score[metric])
 
                 # Model registry does not work with file store
@@ -86,16 +84,6 @@ class ModelEvaluator:
                     mlflow.sklearn.log_model(model, "model")
         except AttributeError as ex:
             raise ex
-        except Exception as ex:
-            raise ex
-
-    @staticmethod
-    def get_best_score(scores: dict, metric_name: str):
-        """Method to get the best score"""
-        try:
-            if metric_name == "r2_score":
-                return max(sorted(scores.values()))
-            return min(sorted(scores.values()))
         except Exception as ex:
             raise ex
 
@@ -116,7 +104,7 @@ class ModelEvaluator:
                         result_dict[key] = value_2
 
             # Save best model
-            best_model_score = self.get_best_score(scores=result_dict,
+            best_model_score = self.eval_metric.get_best_score(scores=result_dict,
                                                    metric_name=best_metric)
             best_model_name = list(result_dict.keys())[list(
                 result_dict.values()).index(best_model_score)]
