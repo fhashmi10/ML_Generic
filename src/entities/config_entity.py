@@ -27,6 +27,8 @@ class ModelConfig:
 @dataclass(frozen=True)
 class EvalConfig:
     """Data class for Evaluation configuration"""   
+    is_binary: bool
+    pos_label: str
     eval_metrics: list
     eval_metric_selection: str
     eval_scores_path: Path

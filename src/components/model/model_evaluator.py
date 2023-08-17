@@ -1,11 +1,11 @@
 """Module to evaluate models"""
 from urllib.parse import urlparse
 import mlflow
-from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
-from src.components.model.eval_metrics import EvalMetrics
-from src.utils.common import get_file_paths_in_folder, \
-    save_object, load_object, save_json
+from components.model.metrics_classification import MetricsClassification
+from components.model.metrics_regression import MetricsRegression
+from src.utils.common import get_file_paths_in_folder, save_object, load_object, save_json
 from src.utils.helper import load_split_data, perform_data_transformation
+from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
 from src import logger
 
 
@@ -19,7 +19,13 @@ class ModelEvaluator:
         self.data_config = data_config
         self.model_config = model_config
         self.eval_config = eval_config
-        self.eval_metric = EvalMetrics()
+        if model_config.model_task=="classification":
+            self.eval_metric = MetricsClassification(eval_config.is_binary,
+                                                     eval_config.pos_label)
+        elif model_config.model_task=="regression":
+            self.eval_metric = MetricsRegression()
+        else:
+            self.eval_metric = MetricsRegression()
 
     def evaluate_models(self, file_paths: list, x_test, y_test):
         """Method to evaluate models"""

@@ -55,7 +55,9 @@ class ConfigurationManager:
         """Method to map evaluation configurations"""
         try:
             config = self.config.evaluation
-            eval_config = EvalConfig(eval_metrics=config.eval_metrics,
+            eval_config = EvalConfig(is_binary=config.is_binary,
+                                     pos_label=config.pos_label,
+                                     eval_metrics=config.eval_metrics,
                                      eval_metric_selection=config.eval_metric_selection,
                                      eval_scores_path=config.eval_scores_path,
                                      mlflow_uri=config.mlflow_uri)
