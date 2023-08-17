@@ -1,43 +1,70 @@
 CrossValidation:
   cv: 3
 
+#-----------------Regression parameters ----------------
 ElasticNet:
   alpha: [0.9, 0.8, 1.0]
   l1_ratio: [0.3, 0.4, 0.5]
 
 DecisionTreeRegressor:
-  criterion: ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
+  criterion: ['squared_error', 'absolute_error', 'friedman_mse', 'poisson']
+  #max_depth: [5,10]
   #splitter: ['best','random']
-  #max_features: ['sqrt','log2']
-
+  max_features: ['sqrt','log2']
 
 RandomForestRegressor:
-  #criterion: ['squared_error', 'friedman_mse', 'absolute_error', 'poisson']
-  #max_features: ['sqrt','log2',None]
   n_estimators: [8,16,32,64,128,256]
-
+  criterion: ['squared_error', 'absolute_error', 'friedman_mse', 'poisson']
+  #max_depth: [5,10]
+  max_features: ['sqrt','log2']
 
 AdaBoostRegressor:
-  learning_rate: [.1,.01,0.5,.001]
-  #loss: ['linear','square','exponential']
   n_estimators: [8,16,32,64,128,256]
-
+  learning_rate: [.001,.01,.1,0.5,1.0]
+  loss: ['linear','square','exponential']
 
 GradientBoostRegressor:
-  #loss: ['squared_error', 'huber', 'absolute_error', 'quantile']
-  learning_rate: [.1,.01,.05,.001]
-  subsample: [0.6,0.7,0.75,0.8,0.85,0.9]
-  #criterion: ['squared_error', 'friedman_mse']
-  #max_features: ['auto','sqrt','log2']
+  loss: ['squared_error', 'absolute_error', 'huber', 'quantile']
+  learning_rate: [.001,.01,.1,0.5,1.0]
   n_estimators: [8,16,32,64,128,256]
-
+  subsample: [0.6,0.7,0.75,0.8,0.85,0.9]
+  criterion: ['friedman_mse','squared_error']
+  max_features: ['sqrt','log2']
 
 XGBRegressor:
-  learning_rate: [.1,.01,.05,.001]
   n_estimators: [8,16,32,64,128,256]
-                
+  learning_rate: [.001,.01,.1,0.5,1.0]                
 
 CatBoostRegressor:
   depth: [6,8,10]
-  learning_rate: [0.01, 0.05, 0.1]
+  learning_rate: [.001,.01,.1,0.5,1.0]
   iterations: [30, 50, 100]
+
+#-----------------Classification parameters ----------------
+DecisionTreeClassifier:
+  criterion: ['gini', 'entropy', 'log_loss']
+  max_depth: [5,10]
+  #splitter: ['best','random']
+  max_features: ['sqrt','log2']
+
+RandomForestClassifier:
+  n_estimators: [8,16,32,64,128,256]
+  criterion: ['gini', 'entropy', 'log_loss']
+  max_depth: [5,10]
+  max_features: ['sqrt','log2']
+
+AdaBoostClassifier:
+  n_estimators: [8,16,32,64,128,256]
+  learning_rate: [.001,.01,.1,0.5,1.0]
+
+GradientBoostClassifier:
+  loss: ['log_loss', 'exponential']
+  learning_rate: [.001,.01,.1,0.5,1.0]
+  n_estimators: [8,16,32,64,128,256]
+  subsample: [0.6,0.7,0.75,0.8,0.85,0.9]
+  criterion: ['friedman_mse','squared_error']
+  max_features: ['sqrt','log2']
+
+XGBClassifier:
+  n_estimators: [8,16,32,64,128,256]
+  learning_rate: [.001,.01,.1,0.5,1.0]

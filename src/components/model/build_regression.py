@@ -16,16 +16,14 @@ from src import logger
 def build_regression_models() -> list:
     """Method to build regression models"""
     try:
-        models = [
-                    LinearRegression(),
-                    ElasticNet(),
-                    DecisionTreeRegressor(),
-                    RandomForestRegressor(),
-                    AdaBoostRegressor(),
-                    GradientBoostingRegressor(),
-                    XGBRegressor(),
-                    CatBoostRegressor(verbose=False),
-                    ]
+        models = [LinearRegression(),
+                  ElasticNet(),
+                  DecisionTreeRegressor(),
+                  RandomForestRegressor(),
+                  AdaBoostRegressor(),
+                  GradientBoostingRegressor(),
+                  XGBRegressor(),
+                  CatBoostRegressor(verbose=False)]
         return models
     except Exception as ex:
         logger.exception("Exception occured: %s", ex)
