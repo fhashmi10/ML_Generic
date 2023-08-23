@@ -3,16 +3,26 @@ import os
 import requests
 from flask import request, render_template
 from flask_cors import cross_origin
+from jinja2 import TemplateNotFound
 
 from web import app
 from src import logger
 from src.pipeline.prediction_pipeline.model_prediction_pipeline import ModelPredictionPipeline
 
-@app.route('/')
+
+@app.route('/', defaults={'path': 'index.html'})
+@app.route('/<path>')
 @cross_origin()
-def index():
-    """Root API endpoint"""
-    return render_template('index.html')
+def index(path):
+    """App main route and generic routing"""
+    try:
+        if not path.endswith('.html'):
+            path += '.html'
+        return render_template(path)
+    except TemplateNotFound:
+        return render_template('page-404.html'), 404
+    except Exception:
+        return render_template('page-500.html'), 500
 
 
 @app.route("/train", methods=['GET', 'POST'])

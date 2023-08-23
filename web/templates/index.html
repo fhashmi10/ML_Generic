@@ -20,13 +20,14 @@
         <!-- Section -->
         <div class="section section-md pt-4">
             <div class="container">
-                    <div class="text-center">
+                <!--<div class="text-center">
                         <label class="form-label">Enter student details</label>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Gender</label>
-                        <select class="form-control" name="gender" placeholder="Enter you Gender" required>
-                            <option class="placeholder" selected disabled value="">Select your Gender</option>
+                    </div>-->
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <!--<label class="form-label">Gender</label>-->
+                        <select class="form-control" name="gender" placeholder="Select Gender" required>
+                            <option class="placeholder" selected disabled value="">Select Gender</option>
                             <option value="male">
                                 Male
                             </option>
@@ -35,9 +36,8 @@
                             </option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Race or Ethnicity</label>
-                        <select class="form-control" name="ethnicity" placeholder="Enter you ethnicity" required>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <select class="form-control" name="ethnicity" placeholder="Select Ethnicity" required>
                             <option class="placeholder" selected disabled value="">Select Ethnicity</option>
                             <option value="group A">
                                 Group A
@@ -56,10 +56,11 @@
                             </option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Parental Level of Education</label>
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
                         <select class="form-control" name="parental_level_of_education"
-                            placeholder="Enter you Parent Education" required>
+                            placeholder="Select Parent Education" required>
                             <option class="placeholder" selected disabled value="">Select Parent Education</option>
                             <option value="associate's degree">
                                 associate's degree
@@ -81,9 +82,8 @@
                             </option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Lunch Type</label>
-                        <select class="form-control" name="lunch" placeholder="Enter you Lunch" required>
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <select class="form-control" name="lunch" placeholder="Select Lunch Type" required>
                             <option class="placeholder" selected disabled value="">Select Lunch Type</option>
                             <option value="free/reduced">
                                 free/reduced
@@ -93,11 +93,12 @@
                             </option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Test preparation Course</label>
-                        <select class="form-control" name="test_preparation_course" placeholder="Enter you Course"
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <select class="form-control" name="test_preparation_course" placeholder="Select Test Course"
                             required>
-                            <option class="placeholder" selected disabled value="">Select Test_course</option>
+                            <option class="placeholder" selected disabled value="">Select Test Course</option>
                             <option value="none">
                                 None
                             </option>
@@ -106,21 +107,32 @@
                             </option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Writing Score out of 100</label>
-                        <input class="form-control" type="number" name="reading_score" placeholder="Enter your Reading score" min='0' max='100' />
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <input class="form-control" type="number" name="reading_score"
+                            placeholder="Enter your Reading score (0-100)" min='0' max='100' />
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Reading Score out of 100</label>
-                        <input class="form-control" type="number" name="writing_score" placeholder="Enter your Reading Score" min='0' max='100' />
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <input class="form-control" type="number" name="writing_score"
+                            placeholder="Enter your Reading Score (0-100)" min='0' max='100' />
                     </div>
-                    <input class="btn mb-2 mr-2 btn-primary" type="submit" value="Predict Math Score" required />
-                    <div class="text-center">
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
+                        <input class="btn mb-2 mr-2 btn-primary" type="submit" value="Predict Math Score" required />
+                    </div>
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-4 col-sm-6 text-center">
+
                         <label class="form-label">The prediction is {{results}}.</label>
+
                     </div>
                 </div>
             </div>
-    <!-- End of Section -->
+        </div>
+        <!-- End of Section -->
     </form>
     <!-- End of Form -->
 </main>
