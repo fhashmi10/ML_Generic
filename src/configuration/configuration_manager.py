@@ -42,6 +42,7 @@ class ConfigurationManager:
             model_config = ModelConfig(model_task=config.model_task,
                                        trained_models_path=config.trained_models_path,
                                        final_model_path=config.final_model_path,
+                                       selected_model=config.selected_model,
                                        model_params=params)
             return model_config
         except AttributeError as ex:

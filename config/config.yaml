@@ -18,6 +18,7 @@ model:
   model_task: regression # regression/classification
   trained_models_path: artifacts/models/a.trained_models/
   final_model_path: artifacts/models/b.final_model/model.pkl
+  selected_model: LinearRegression # value if when you have finalized your model and want to fine tune just that; else leave blank
 
 
 evaluation:

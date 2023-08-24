@@ -21,6 +21,7 @@ class ModelConfig:
     model_task: str
     trained_models_path: Path
     final_model_path: Path
+    selected_model: str
     model_params: dict
 
 

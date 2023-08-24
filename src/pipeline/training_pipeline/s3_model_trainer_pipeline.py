@@ -20,7 +20,8 @@ class ModelTrainerPipeline():
 
             # Get list of models to train
             models = build_models_list(
-                model_objective=model_config.model_task)
+                model_task=model_config.model_task,
+                selected_model=model_config.selected_model)
 
             # Train models
             model_trainer = ModelTrainer(models=models,
