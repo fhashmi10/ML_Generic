@@ -6,7 +6,6 @@ from flask_cors import cross_origin
 from jinja2 import TemplateNotFound
 
 from web import app
-from src import logger
 from src.pipeline.prediction_pipeline.model_prediction_pipeline import ModelPredictionPipeline
 
 
@@ -19,10 +18,12 @@ def index(path):
         if not path.endswith('.html'):
             path += '.html'
         return render_template(path)
+    except requests.Timeout:
+        return render_template('page-error.html', error="Timeout occured!")
     except TemplateNotFound:
-        return render_template('page-404.html'), 404
+        return render_template('page-error.html', error="Page not found!")
     except Exception:
-        return render_template('page-500.html'), 500
+        return render_template('page-error.html', error="Server error!")
 
 
 @app.route("/train", methods=['GET', 'POST'])
@@ -32,12 +33,12 @@ def train():
     try:
         os.system("python main.py")
         return "Training done successfully!"
-    except requests.Timeout as ex:
-        logger.exception("Timeout occured %s", ex)
-        raise ex
-    except Exception as ex:
-        logger.exception("Error in training %s", ex)
-        return "Exception occured: Check logs"
+    except requests.Timeout:
+        return render_template('page-error.html', error="Timeout occured!")
+    except TemplateNotFound:
+        return render_template('page-error.html', error="Page not found!")
+    except Exception:
+        return render_template('page-error.html', error="Server error!")
 
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -61,6 +62,9 @@ def predict():
         predict_pipeline = ModelPredictionPipeline()
         results = predict_pipeline.predict(features_dict=features_dict)
         return render_template('index.html', results=results)
-    except Exception as ex:
-        logger.exception("Error in prediction %s", ex)
-        return render_template('index.html', results="Exception occured: Check logs")
+    except requests.Timeout:
+        return render_template('page-error.html', error="Timeout occured!")
+    except TemplateNotFound:
+        return render_template('page-error.html', error="Page not found!")
+    except Exception:
+        return render_template('page-error.html', error="Error in Prediction!")

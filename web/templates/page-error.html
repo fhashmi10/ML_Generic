@@ -1,6 +1,6 @@
 {% extends "layouts/base-fullscreen.html" %}
 
-{% block title %} Error 500 {% endblock %}
+{% block title %} Error {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
 {% block stylesheets %}{% endblock stylesheets %}
@@ -19,11 +19,11 @@
 
                         <div class="text-center text-md-center mb-4 mt-md-0">
                             <h1 class="mb-0 h3">
-                                Error 500
+                                Error
                             </h1>
                             <br />
                             <p>
-                                Server error
+                                {{error}}
                             </p>
                         </div>
 

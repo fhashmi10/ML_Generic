@@ -24,9 +24,9 @@
                         <label class="form-label">Enter student details</label>
                     </div>-->
                 <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-4 col-sm-6 text-center">
-                        <!--<label class="form-label">Gender</label>-->
-                        <select class="form-control" name="gender" placeholder="Select Gender" required>
+                    <div class="col-lg-2 col-sm-3 text-center">
+                        <!--<label class="my-1 me-2" for="gender">Gender</label>-->
+                        <select class="form-select" name="gender" id="gender" placeholder="Select Gender" required>
                             <option class="placeholder" selected disabled value="">Select Gender</option>
                             <option value="male">
                                 Male
@@ -36,9 +36,9 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center">
-                        <select class="form-control" name="ethnicity" placeholder="Select Ethnicity" required>
-                            <option class="placeholder" selected disabled value="">Select Ethnicity</option>
+                    <div class="col-lg-2 col-sm-3 text-center">
+                        <select class="form-select" name="ethnicity" placeholder="Select Race" required>
+                            <option class="placeholder" selected disabled value="">Select Race</option>
                             <option value="group A">
                                 Group A
                             </option>
@@ -56,10 +56,8 @@
                             </option>
                         </select>
                     </div>
-                </div>
-                <div class="row mb-4 mb-lg-5 justify-content-center">
                     <div class="col-lg-4 col-sm-6 text-center">
-                        <select class="form-control" name="parental_level_of_education"
+                        <select class="form-select" name="parental_level_of_education"
                             placeholder="Select Parent Education" required>
                             <option class="placeholder" selected disabled value="">Select Parent Education</option>
                             <option value="associate's degree">
@@ -82,8 +80,10 @@
                             </option>
                         </select>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center">
-                        <select class="form-control" name="lunch" placeholder="Select Lunch Type" required>
+                </div>
+                <div class="row mb-4 mb-lg-5 justify-content-center">
+                    <div class="col-lg-3 col-sm-5 text-center">
+                        <select class="form-select" name="lunch" placeholder="Select Lunch Type" required>
                             <option class="placeholder" selected disabled value="">Select Lunch Type</option>
                             <option value="free/reduced">
                                 free/reduced
@@ -93,10 +93,8 @@
                             </option>
                         </select>
                     </div>
-                </div>
-                <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-4 col-sm-6 text-center">
-                        <select class="form-control" name="test_preparation_course" placeholder="Select Test Course"
+                    <div class="col-lg-3 col-sm-5 text-center">
+                        <select class="form-select" name="test_preparation_course" placeholder="Select Test Course"
                             required>
                             <option class="placeholder" selected disabled value="">Select Test Course</option>
                             <option value="none">
@@ -109,13 +107,13 @@
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-4 col-sm-6 text-center">
+                    <div class="col-lg-3 col-sm-5 text-center">
                         <input class="form-control" type="number" name="reading_score"
-                            placeholder="Enter your Reading score (0-100)" min='0' max='100' />
+                            placeholder="Reading score (0-100)" min='0' max='100' required />
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center">
+                    <div class="col-lg-3 col-sm-5 text-center">
                         <input class="form-control" type="number" name="writing_score"
-                            placeholder="Enter your Reading Score (0-100)" min='0' max='100' />
+                            placeholder="Writing Score (0-100)" min='0' max='100' required />
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">
