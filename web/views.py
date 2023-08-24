@@ -48,16 +48,12 @@ def predict():
     try:
         if request.method == 'GET':
             return render_template('index.html')
+        feature_identifier = "col_"
         features_dict = {}
-        features_dict.update({
-            "gender": request.form.get('gender'),
-            "race_ethnicity": request.form.get('ethnicity'),
-            "parental_level_of_education": request.form.get('parental_level_of_education'),
-            "lunch": request.form.get('lunch'),
-            "test_preparation_course": request.form.get('test_preparation_course'),
-            "reading_score": float(request.form.get('writing_score')),
-            "writing_score": float(request.form.get('reading_score'))
-        })
+        for key, val in request.form.items():
+            if key.startswith(feature_identifier):
+                feature=key.split(feature_identifier)[1]
+                features_dict.update({feature: val})
 
         predict_pipeline = ModelPredictionPipeline()
         results = predict_pipeline.predict(features_dict=features_dict)
