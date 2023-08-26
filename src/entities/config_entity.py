@@ -6,6 +6,13 @@ from pathlib import Path
 
 
 @dataclass(frozen=True)
+class SchemaConfig:
+    """Data class for schema configurations"""
+    ordinal_cols: list
+    date_columns: list
+
+
+@dataclass(frozen=True)
 class DataConfig:
     """Data class for data configurations"""
     input_path: Path

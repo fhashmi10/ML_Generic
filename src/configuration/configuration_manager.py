@@ -4,7 +4,7 @@ Module to read configuration from yaml files
 from src import logger
 from src.configuration import CONFIG_FILE_PATH, PARAMS_FILE_PATH
 from src.utils.common import read_yaml_configbox, read_yaml_dict
-from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
+from src.entities.config_entity import SchemaConfig, DataConfig, ModelConfig, EvalConfig
 
 class ConfigurationManager:
     """Configuration manager class to read configuration files"""
@@ -13,6 +13,20 @@ class ConfigurationManager:
         try:
             self.config = read_yaml_configbox(CONFIG_FILE_PATH)
             self.params_dict = read_yaml_dict(PARAMS_FILE_PATH)
+        except Exception as ex:
+            logger.exception("Exception occured: %s", ex)
+            raise ex
+
+    def get_schema_config(self) -> SchemaConfig:
+        """Method to map schema configurations"""
+        try:
+            config = self.config.schema
+            schema_config = SchemaConfig(ordinal_cols=config.ordinal_cols,
+                                       date_columns=config.date_columns)
+            return schema_config
+        except AttributeError as ex:
+            logger.exception("Error finding attribute: %s", ex)
+            raise ex
         except Exception as ex:
             logger.exception("Exception occured: %s", ex)
             raise ex

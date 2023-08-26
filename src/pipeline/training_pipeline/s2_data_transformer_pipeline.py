@@ -16,8 +16,10 @@ class DataTransformerPipeline():
         """Method to read configuration and transform data"""
         try:
             config = ConfigurationManager()
+            schema_config = config.get_schema_config()
             data_config = config.get_data_config()
-            data_transformer = DataTransformer(data_config=data_config)
+            data_transformer = DataTransformer(schema_config=schema_config,
+                                               data_config=data_config)
             data_transformer.build_data_transformer()
         except Exception as ex:
             raise ex

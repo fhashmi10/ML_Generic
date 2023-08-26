@@ -1,9 +1,6 @@
-schema:
-  one_hot_cols:
-  binary_map_cols:
-  ordinal_cols:
-  numerical_cols:
-  date_columns:
+schema: # Comma separated column names - ignored if not specified
+  ordinal_cols: 
+  date_columns: 
 
 
 data:
@@ -27,4 +24,4 @@ evaluation:
   eval_metrics: r2_score, mean_squared_error, mean_absolute_error
   eval_metric_selection: r2_score # Can only provide one metric here as best model selection criteria
   eval_scores_path: artifacts/models/c.evaluation_score/scores.json
-  mlflow_uri:
+  mlflow_uri: # Use local if not specified
