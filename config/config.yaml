@@ -24,4 +24,4 @@ evaluation:
   eval_metrics: r2_score, mean_squared_error, mean_absolute_error
   eval_metric_selection: r2_score # Can only provide one metric here as best model selection criteria
   eval_scores_path: artifacts/models/c.evaluation_score/scores.json
-  mlflow_uri: # Use local if not specified
+  mlflow_uri: # Uses local if not specified
