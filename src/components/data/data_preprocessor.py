@@ -28,6 +28,12 @@ def preprocess_data(data_frame) -> pd.DataFrame:
 
         # Replace bad characters with nan
         # data_frame.replace('?', np.nan, inplace=True)
+
+        # Bad data handling
+        # data_frame["umbrella_limit"] = data_frame["umbrella_limit"].apply(
+        #   lambda x: 1000000 if x == -1000000 else x)
+
+        # Outlier handling
         return data_frame
     except Exception as ex:
         logger.exception("Exception occured while pre-processing data %s", ex)
