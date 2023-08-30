@@ -24,101 +24,69 @@
                         <label class="form-label">Enter student details</label>
                     </div>-->
                 <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-2 col-sm-3 text-center">
+                    <div class="col-lg-2 col-sm-3">
                         <!--<label class="my-1 me-2" for="gender">Gender</label>-->
-                        <select class="form-select" name="col_gender" id="gender" placeholder="Select Gender" required>
-                            <option class="placeholder" selected disabled value="">Select Gender</option>
-                            <option value="male">
-                                Male
-                            </option>
-                            <option value="female">
-                                Female
-                            </option>
+                        <label class="my-1 me-2">Gender</label>
+                        <!-- <select class="form-select" name="col_gender" id="gender" placeholder="Select Gender" required> -->
+                            <!-- <option class="placeholder" selected disabled value="">Select Gender</option> -->
+                        <select class="form-select" name="col_gender" id="gender" required>
+                            <option value="male" selected>Male</option>
+                            <option value="female">Female</option>
                         </select>
                     </div>
-                    <div class="col-lg-2 col-sm-3 text-center">
-                        <select class="form-select" name="col_race_ethnicity" placeholder="Select Race" required>
-                            <option class="placeholder" selected disabled value="">Select Race</option>
-                            <option value="group A">
-                                Group A
-                            </option>
-                            <option value="group B">
-                                Group B
-                            </option>
-                            <option value="group C">
-                                Group C
-                            </option>
-                            <option value="group D">
-                                Group D
-                            </option>
-                            <option value="group E">
-                                Group E
-                            </option>
+                    <div class="col-lg-2 col-sm-3">
+                        <label class="my-1 me-2">Race</label>
+                        <select class="form-select" name="col_race_ethnicity" required>
+                            <option selected>group A</option>
+                            <option>group B</option>
+                            <option>group C</option>
+                            <option>group D</option>
+                            <option>group E</option>
                         </select>
                     </div>
-                    <div class="col-lg-4 col-sm-6 text-center">
-                        <select class="form-select" name="col_parental_level_of_education"
-                            placeholder="Select Parent Education" required>
-                            <option class="placeholder" selected disabled value="">Select Parent Education</option>
-                            <option value="associate's degree">
-                                associate's degree
-                            </option>
-                            <option value="bachelor's degree">
-                                bachelor's degree
-                            </option>
-                            <option value="high school">
-                                high school
-                            </option>
-                            <option value="master's degree">
-                                master's degree
-                            </option>
-                            <option value="some college">
-                                some college
-                            </option>
-                            <option value="some high school">
-                                some high school
-                            </option>
+                    <div class="col-lg-4 col-sm-6">
+                        <label class="my-1 me-2">Parent Education</label>
+                        <select class="form-select" name="col_parental_level_of_education" required>
+                            <option selected>associate's degree</option>
+                            <option>bachelor's degree</option>
+                            <option>high school</option>
+                            <option>master's degree</option>
+                            <option>some college</option>
+                            <option>some high school</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-3 col-sm-5 text-center">
-                        <select class="form-select" name="col_lunch" placeholder="Select Lunch Type" required>
-                            <option class="placeholder" selected disabled value="">Select Lunch Type</option>
-                            <option value="free/reduced">
-                                free/reduced
-                            </option>
-                            <option value="standard">
-                                standard
-                            </option>
+                    <div class="col-lg-3 col-sm-5">
+                        <label class="my-1 me-2">Lunch Type</label>
+                        <select class="form-select" name="col_lunch" required>
+                            <option selected>free/reduced</option>
+                            <option>standard</option>
                         </select>
                     </div>
-                    <div class="col-lg-3 col-sm-5 text-center">
-                        <select class="form-select" name="col_test_preparation_course" placeholder="Select Test Course"
-                            required>
-                            <option class="placeholder" selected disabled value="">Select Test Course</option>
-                            <option value="none">
-                                None
-                            </option>
-                            <option value="completed">
-                                Completed
-                            </option>
+                    <div class="col-lg-3 col-sm-5">
+                        <label class="my-1 me-2">Prep Course</label>
+                        <select class="form-select" name="col_test_preparation_course" required>
+                            <option selected>none</option>
+                            <option>completed</option>
                         </select>
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">
-                    <div class="col-lg-3 col-sm-5 text-center">
+                    <div class="col-lg-3 col-sm-5">
+                        <label class="my-1 me-2">Reading score</label>
                         <input class="form-control" type="number" name="col_reading_score"
-                            placeholder="Reading score (0-100)" min='0' max='100' required />
+                            value="65" min='0' max='100' required />
                     </div>
-                    <div class="col-lg-3 col-sm-5 text-center">
+                    <div class="col-lg-3 col-sm-5">
+                        <label class="my-1 me-2">Writing Score</label>
                         <input class="form-control" type="number" name="col_writing_score"
-                            placeholder="Writing Score (0-100)" min='0' max='100' required />
+                            value="65" min='0' max='100' required />
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">
                     <div class="col-lg-4 col-sm-6 text-center">
-                        <input class="btn mb-2 mr-2 btn-primary" type="submit" value="Predict Math Score" required />
+                        <input class="btn mb-2 mr-2 btn-primary" type="submit" value="Predict" required />
                     </div>
                 </div>
                 <div class="row mb-4 mb-lg-5 justify-content-center">

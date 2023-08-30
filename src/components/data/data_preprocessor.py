@@ -33,6 +33,11 @@ def preprocess_data(data_frame) -> pd.DataFrame:
         # data_frame["umbrella_limit"] = data_frame["umbrella_limit"].apply(
         #   lambda x: 1000000 if x == -1000000 else x)
 
+        # Empty data handling
+        # data_frame["authorities_contacted"].fillna("None", inplace=True)
+        # data_frame["police_report_available"] = data_frame["police_report_available"].apply(
+        #    lambda x: "NO" if x is np.nan else x)
+
         # Outlier handling
         return data_frame
     except Exception as ex:
