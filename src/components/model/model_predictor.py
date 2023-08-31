@@ -29,7 +29,10 @@ class ModelPredictor:
             logger.info("loaded model successfully.")
 
             # Predict
-            prediction = int(round(model.predict(transformed_data)[0], 0))
+            if self.model_config.model_task=="classification":
+                prediction = model.predict(transformed_data)[0]
+            else:
+                prediction = int(round(model.predict(transformed_data)[0], 0))
             logger.info("Predicted %s", prediction)
             return prediction
         except AttributeError as ex:
