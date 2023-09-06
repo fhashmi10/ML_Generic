@@ -2,8 +2,8 @@
 """
 Module to build models
 """
-from components.model.build_regression import build_regression_models
-from components.model.build_classification import build_classification_models
+from src.components.model.build_regression import build_regression_models
+from src.components.model.build_classification import build_classification_models
 from src import logger
 
 def build_models_list(model_task: str, selected_model: str) -> list:

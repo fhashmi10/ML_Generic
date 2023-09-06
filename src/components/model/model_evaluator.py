@@ -1,8 +1,8 @@
 """Module to evaluate models"""
 from urllib.parse import urlparse
 import mlflow
-from components.model.metrics_classification import MetricsClassification
-from components.model.metrics_regression import MetricsRegression
+from src.components.model.metrics_classification import MetricsClassification
+from src.components.model.metrics_regression import MetricsRegression
 from src.utils.common import get_file_paths_in_folder, save_object, load_object, save_json
 from src.utils.helper import load_split_data, perform_data_transformation
 from src.entities.config_entity import DataConfig, ModelConfig, EvalConfig
