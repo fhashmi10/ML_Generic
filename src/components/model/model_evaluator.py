@@ -39,15 +39,25 @@ class ModelEvaluator:
                 model_name = type(model).__name__
                 logger.info("Loaded %s successfully.", model_name)
                 y_test_pred = model.predict(x_test)
+                # Predict probability as well in case of classification
+                if self.model_config.model_task == "classification":
+                    y_test_pred_proba = model.predict_proba(x_test)
 
                 # Evaluate
                 metrics = [met.strip()
                            for met in self.eval_config.eval_metrics.split(',')]
                 test_model_scores = {}
                 for metric in metrics:
-                    test_model_score = self.eval_metric.evaluate_metric(eval_metric=metric,
-                                                                        actual=y_test,
-                                                                        predicted=y_test_pred)
+                    if metric in ["roc_auc_score"]:
+                        test_model_score = self.eval_metric.evaluate_metric(
+                            eval_metric=metric,
+                            actual=y_test,
+                            predicted=y_test_pred_proba[:,1])
+                    else:
+                        test_model_score = self.eval_metric.evaluate_metric(
+                            eval_metric=metric,
+                            actual=y_test,
+                            predicted=y_test_pred)
                     test_model_scores[metric] = test_model_score
                     logger.info("Evaluated %s with %s: %s", model_name,
                                 metric, test_model_score)

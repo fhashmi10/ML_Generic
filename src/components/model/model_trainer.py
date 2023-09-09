@@ -1,5 +1,6 @@
 """Module to train models"""
 from sklearn.model_selection import GridSearchCV
+from imblearn import over_sampling
 from src.entities.config_entity import DataConfig, ModelConfig
 from src.utils.common import save_object
 from src.utils.helper import load_split_data, perform_data_transformation
@@ -41,6 +42,11 @@ class ModelTrainer:
             x_train_transformed = perform_data_transformation(
                 transformer_path=self.data_config.transformer_path,
                 input_data=x_train)
+
+            # Balance data in case of classification
+            if self.model_config.model_task=="classification":
+                oversample = over_sampling.SMOTE(random_state=0)
+                x_train_transformed, y_train = oversample.fit_resample(x_train_transformed, y_train)
 
             # Train all models
             for model in self.models:

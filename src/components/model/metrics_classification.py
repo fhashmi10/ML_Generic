@@ -1,5 +1,5 @@
 """Module to define all evaluation metrics"""
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
 from src import logger
 
 
@@ -70,6 +70,17 @@ class MetricsClassification():
                 score = f1_score(actual, predicted, pos_label=self.pos_label)
             else:
                 score = f1_score(actual, predicted, average="weighted")
+            return score
+        except Exception as ex:
+            raise ex
+
+    def roc_auc_score(self, actual, predicted):
+        """Method to calculate rpc auc score"""
+        try:
+            if self.is_binary:
+                score = roc_auc_score(actual, predicted)
+            else:
+                score = roc_auc_score(actual, predicted, average="weighted")
             return score
         except Exception as ex:
             raise ex

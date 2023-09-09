@@ -4,10 +4,10 @@ Module to build models classification models
 This class can be extended to add more models or make changes to models
 You can also choose to save the built base models and separate out training
 """
-# from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier, GradientBoostingClassifier
-#from xgboost import XGBClassifier
+from xgboost import XGBClassifier
 
 from src import logger
 
@@ -17,11 +17,12 @@ def build_classification_models(selected_model: str) -> list:
     try:
         # LogisticRegression, -implement later as it predicts probabilities
         # and then need to find optimal cutoff
-        models = [DecisionTreeClassifier(),
+        models = [LogisticRegression(),
+                  DecisionTreeClassifier(),
                   RandomForestClassifier(),
                   AdaBoostClassifier(),
                   GradientBoostingClassifier(),
-                  #XGBClassifier()
+                  XGBClassifier()
                   ]
         if selected_model is not None:
             if selected_model.strip()!="":
