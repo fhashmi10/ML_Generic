@@ -1,9 +1,9 @@
 """Module to train models"""
-from sklearn.model_selection import GridSearchCV
-from imblearn import over_sampling
+from sklearn.model_selection import GridSearchCV, RandomizedSearchCV
+from imblearn import over_sampling, under_sampling, pipeline
 from src.entities.config_entity import DataConfig, ModelConfig
 from src.utils.common import save_object
-from src.utils.helper import load_split_data, perform_data_transformation
+from src.utils.helper import load_split_data, perform_data_transformation, sample_data
 from src import logger
 
 
@@ -22,9 +22,23 @@ class ModelTrainer:
         try:
             logger.info(
                 "Training GSV to find best parameters for %s", type(model).__name__)
-            gsv = GridSearchCV(
-                model, param, cv=self.model_config.model_params['CrossValidation']['cv'])
-            gsv.fit(x_train, y_train)
+            if self.model_config.randomize_grid_search is True:
+                gsv = RandomizedSearchCV(model, param, n_iter=10,
+                    cv=self.model_config.model_params['CrossValidation']['cv'],
+                    n_jobs=-2, verbose=2)
+            else:
+                gsv = GridSearchCV(model, param,
+                    cv=self.model_config.model_params['CrossValidation']['cv'],
+                    n_jobs=-2, verbose=2)
+
+            if x_train.shape[0]<=self.model_config.gsv_max_data_size:
+                gsv.fit(x_train, y_train)
+            else:
+                x_train_sample, y_train_sample = sample_data(
+                    x_train=x_train,
+                    y_train=y_train,
+                    sample_size=self.model_config.gsv_max_data_size)
+                gsv.fit(x_train_sample, y_train_sample)
             return gsv.best_params_
         except AttributeError as ex:
             raise ex
@@ -44,9 +58,16 @@ class ModelTrainer:
                 input_data=x_train)
 
             # Balance data in case of classification
-            if self.model_config.model_task=="classification":
-                oversample = over_sampling.SMOTE(random_state=0)
-                x_train_transformed, y_train = oversample.fit_resample(x_train_transformed, y_train)
+            if self.model_config.model_task == "classification":
+                # Oversample minority class to 40% of majority class
+                over_sample = over_sampling.SMOTE(sampling_strategy=0.4,
+                                                  random_state=42)
+                # Undersample majority class to be double of minority class
+                under_sample = under_sampling.RandomUnderSampler(sampling_strategy=0.5,
+                                                                 random_state=42)
+                resampler_pipeline = pipeline.make_pipeline(over_sample, under_sample)
+                x_train_transformed, y_train = resampler_pipeline.fit_resample(
+                    x_train_transformed, y_train)
 
             # Train all models
             for model in self.models:

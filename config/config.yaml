@@ -13,6 +13,8 @@ data:
 
 model:
   model_task: regression # regression/classification
+  randomize_grid_search: False # Use Randomized Grid Search when True
+  gsv_max_data_size: 20000 # Max data to run GSV on
   trained_models_path: artifacts/models/a.trained_models/
   final_model_path: artifacts/models/b.final_model/model.pkl
   selected_model: LinearRegression # value if when you have finalized your model and want to fine tune just that; else leave blank

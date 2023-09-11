@@ -26,6 +26,8 @@ class DataConfig:
 class ModelConfig:
     """Data class for Model configuration"""
     model_task: str
+    randomize_grid_search: bool
+    gsv_max_data_size: int
     trained_models_path: Path
     final_model_path: Path
     selected_model: str

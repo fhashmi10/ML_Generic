@@ -54,6 +54,8 @@ class ConfigurationManager:
             config = self.config.model
             params = self.params_dict
             model_config = ModelConfig(model_task=config.model_task,
+                                       randomize_grid_search=config.randomize_grid_search,
+                                       gsv_max_data_size=config.gsv_max_data_size,
                                        trained_models_path=config.trained_models_path,
                                        final_model_path=config.final_model_path,
                                        selected_model=config.selected_model,
