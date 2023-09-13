@@ -10,7 +10,6 @@ from box import ConfigBox, exceptions
 from src import logger
 
 
-@staticmethod
 def read_yaml_dict(path_to_yaml: Path) -> dict:
     """Method to read yaml and return a dict instance"""
     try:
@@ -30,7 +29,6 @@ def read_yaml_dict(path_to_yaml: Path) -> dict:
         raise ex
 
 
-@staticmethod
 def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
     """Method to read yaml and return a ConfigBox instance
     A configbox helps in accessing yaml contents with . syntax"""
@@ -46,7 +44,6 @@ def read_yaml_configbox(path_to_yaml: Path) -> ConfigBox:
         raise ex
 
 
-@staticmethod
 def create_directories(path_to_directories: list, is_file_path=False):
     """Method to create directories"""
     try:
@@ -63,7 +60,6 @@ def create_directories(path_to_directories: list, is_file_path=False):
         raise ex
 
 
-@staticmethod
 def remove_directories(path_to_directories: list):
     """Method to remove directories"""
     try:
@@ -82,7 +78,6 @@ def remove_directories(path_to_directories: list):
         raise ex
 
 
-@staticmethod
 def save_object(obj, file_path: Path):
     """Method to save an object to a file"""
     try:
@@ -96,7 +91,6 @@ def save_object(obj, file_path: Path):
         raise ex
 
 
-@staticmethod
 def load_object(file_path: Path):
     """Method to load an object from a file"""
     try:
@@ -109,7 +103,6 @@ def load_object(file_path: Path):
         raise ex
 
 
-@staticmethod
 def save_json(file_path: Path, data: dict):
     """Method to dump data to a json file"""
     try:
@@ -124,7 +117,6 @@ def save_json(file_path: Path, data: dict):
         raise ex
 
 
-@staticmethod
 def load_json(file_path: Path) -> ConfigBox:
     """Method to load data from a json file"""
     try:
@@ -139,7 +131,6 @@ def load_json(file_path: Path) -> ConfigBox:
         raise ex
 
 
-@staticmethod
 def get_file_paths_in_folder(folder_path: Path) -> list:
     """Method to get all file paths in a folder"""
     try:

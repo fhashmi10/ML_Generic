@@ -5,7 +5,6 @@ import numpy as np
 from src import logger
 from src.utils.common import load_object
 
-@staticmethod
 def load_split_data(data_path: Path, target_column: str):
     """Method to load split data"""
     try:
@@ -22,7 +21,6 @@ def load_split_data(data_path: Path, target_column: str):
         raise ex
 
 
-@staticmethod
 def perform_data_transformation(transformer_path: Path, input_data: pd.DataFrame):
     """Method to transform data using transformer"""
     try:
@@ -38,7 +36,6 @@ def perform_data_transformation(transformer_path: Path, input_data: pd.DataFrame
         raise ex
 
 
-@staticmethod
 def sample_data(x_train, y_train, sample_size: int):
     """Method to sample data"""
     try:
