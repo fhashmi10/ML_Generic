@@ -13,9 +13,9 @@ class ModelEvaluator:
     """Class to evaluate models"""
 
     def __init__(self,
-                 data_config=DataConfig,
-                 model_config=ModelConfig,
-                 eval_config=EvalConfig):
+                 data_config: DataConfig,
+                 model_config: ModelConfig,
+                 eval_config: EvalConfig):
         self.data_config = data_config
         self.model_config = model_config
         self.eval_config = eval_config

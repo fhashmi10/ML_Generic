@@ -11,8 +11,8 @@ class ModelTrainer:
     """Class to train models"""
 
     def __init__(self, models: list,
-                 data_config=DataConfig,
-                 model_config=ModelConfig):
+                 data_config: DataConfig,
+                 model_config: ModelConfig):
         self.models = models
         self.data_config = data_config
         self.model_config = model_config

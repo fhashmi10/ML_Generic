@@ -11,7 +11,7 @@ from src import logger
 class ModelPredictor:
     """Class to perform prediction"""
 
-    def __init__(self, data_config=DataConfig, model_config=ModelConfig):
+    def __init__(self, data_config: DataConfig, model_config: ModelConfig):
         self.data_config = data_config
         self.model_config = model_config
 
